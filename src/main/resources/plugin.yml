@@ -1,0 +1,17 @@
+name: Staff
+version: ${project.version}
+main: com.gmail.vcamilx.staff.Staff
+api-version: 1.16
+authors: [ vCamilo ]
+description: vStaff plugin.
+website: https://github.com/vCamilx
+commands:
+  check:
+    description: Check if a Staff is currently online
+    aliases: [ 'isOnline' ]
+  inventorysee:
+    description: See a player inventory
+    aliases: [ 'invsee' ]
+  staff:
+    description: Staff mode.
+    aliases: [ 'staffmode', 'mod' , 'hackermode', 'h' ]
