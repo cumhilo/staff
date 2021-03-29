@@ -9,9 +9,4 @@ public class StaffService implements IService {
         new ListenerServiceImpl().start();
         new CommandServiceImpl().start();
     }
-
-    @Override
-    public void interrupt() {
-
-    }
 }

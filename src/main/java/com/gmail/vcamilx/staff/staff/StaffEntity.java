@@ -8,10 +8,9 @@ import org.bukkit.entity.Player;
 @Setter
 public class StaffEntity {
     private Player player;
-
-    private boolean staffChat;
-    private boolean staffMode;
-    private boolean vanished;
+    private boolean staffChat,
+            staffMode,
+            vanished;
 
     public StaffEntity(Player player) {
         this.player = player;

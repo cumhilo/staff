@@ -16,9 +16,4 @@ public class ListenerServiceImpl implements IService {
     public void start() {
         registerListener();
     }
-
-    @Override
-    public void interrupt() {
-
-    }
 }

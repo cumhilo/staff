@@ -5,7 +5,6 @@ import com.gmail.vcamilx.staff.command.CheckStaffCommand;
 import com.gmail.vcamilx.staff.command.InventorySeeCommand;
 import com.gmail.vcamilx.staff.command.StaffCommand;
 import com.gmail.vcamilx.staff.service.IService;
-import com.gmail.vcamilx.staff.service.StaffService;
 
 import java.util.Objects;
 
@@ -19,10 +18,5 @@ public class CommandServiceImpl implements IService {
     @Override
     public void start() {
         registerCommand();
-    }
-
-    @Override
-    public void interrupt() {
-
     }
 }
