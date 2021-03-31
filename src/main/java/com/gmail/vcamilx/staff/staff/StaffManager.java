@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class StaffMode {
+public class StaffManager {
     public static Map<UUID, Player> staffMap = new HashMap<>();
     public static Map<UUID, Player> staffChat = new HashMap<>();
 

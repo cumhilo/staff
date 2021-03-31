@@ -1,7 +1,7 @@
 package com.gmail.vcamilx.staff.command;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.staff.StaffMode;
+import com.gmail.vcamilx.staff.staff.StaffManager;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -29,21 +29,21 @@ public class StaffCommand implements CommandExecutor {
         if (args.length >= 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target != null) {
-                if (!StaffMode.isStaffMode(target)) {
-                    StaffMode.setStaff(target);
+                if (!StaffManager.isStaffMode(target)) {
+                    StaffManager.setStaff(target);
                     return true;
                 }
 
-                StaffMode.disableStaff(target);
+                StaffManager.disableStaff(target);
                 return true;
             }
         }
-        if (!StaffMode.isStaffMode(player)) {
-            StaffMode.setStaff(player);
+        if (!StaffManager.isStaffMode(player)) {
+            StaffManager.setStaff(player);
             return true;
         }
 
-        StaffMode.disableStaff(player);
+        StaffManager.disableStaff(player);
         return false;
     }
 }

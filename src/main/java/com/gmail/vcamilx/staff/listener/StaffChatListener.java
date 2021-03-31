@@ -1,7 +1,7 @@
 package com.gmail.vcamilx.staff.listener;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.staff.StaffMode;
+import com.gmail.vcamilx.staff.staff.StaffManager;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ public class StaffChatListener implements Listener {
     @EventHandler
     public void onMessage(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if (StaffMode.isStaffChat(player)) {
+        if (StaffManager.isStaffChat(player)) {
             for (Player staffs : Bukkit.getOnlinePlayers()) {
                 if (staffs.hasPermission("staff.chat")) {
                     staffs.sendMessage(ChatUtil.translate(
