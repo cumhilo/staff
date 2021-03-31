@@ -1,14 +1,17 @@
 package com.gmail.vcamilx.staff;
 
 import com.gmail.vcamilx.staff.service.StaffService;
+import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Staff extends JavaPlugin {
 
-    public static Staff plugin;
+    @Getter
+    private static Staff plugin;
 
     @Override
     public void onEnable() {
+        Staff.plugin = this;
         new StaffService().start();
         saveDefaultConfig();
     }
@@ -16,5 +19,6 @@ public final class Staff extends JavaPlugin {
     @Override
     public void onDisable() {
         System.out.println("Plugin has been disabled");
+        Staff.plugin = null;
     }
 }

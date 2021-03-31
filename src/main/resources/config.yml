@@ -1,2 +1,3 @@
 messages:
+  noConsole: "&cNo console command."
   noPermission: "&cYou do not have permissions to do this, please contact an administrator if you think it is an error."
