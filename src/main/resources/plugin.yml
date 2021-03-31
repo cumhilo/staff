@@ -12,6 +12,9 @@ commands:
   inventorysee:
     description: See a player inventory
     aliases: [ 'invsee' ]
+  staffchat:
+    description: Staff chat.
+    aliases: [ 'sc', 'ac' ,'staffc' ]
   staff:
     description: Staff mode.
     aliases: [ 'staffmode', 'mod' , 'hackermode', 'h' ]

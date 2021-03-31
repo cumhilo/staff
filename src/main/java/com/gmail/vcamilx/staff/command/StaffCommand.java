@@ -1,7 +1,7 @@
 package com.gmail.vcamilx.staff.command;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.staff.StaffEntity;
+import com.gmail.vcamilx.staff.staff.StaffMode;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -13,35 +13,35 @@ public class StaffCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatUtil.translate("&cNo console command."));
+            sender.sendMessage(ChatUtil.translate(Staff.getPlugin().getConfig().getString("messages.noConsole")));
             return true;
         }
 
         Player player = (Player) sender;
 
         if (!player.hasPermission("staff.mode")) {
-            ChatUtil.translate(Staff.plugin.getConfig().getString("messages.noPermission"));
+            player.sendMessage(ChatUtil.translate(Staff.getPlugin().getConfig().getString("messages.noPermission")));
             return true;
         }
 
-        if (args.length != 0) {
+        if (args.length >= 1) {
             Player target = Bukkit.getPlayer(args[0]);
-            setStaff(target);
+            if (target != null) {
+                if (!StaffMode.isStaffMode(target)) {
+                    StaffMode.setStaff(target);
+                    return true;
+                }
+
+                StaffMode.disableStaff(target);
+                return true;
+            }
+        }
+        if (!StaffMode.isStaffMode(player)) {
+            StaffMode.setStaff(player);
             return true;
         }
 
-        setStaff(player);
+        StaffMode.disableStaff(player);
         return false;
-    }
-
-    private void setStaff(Player player) {
-        StaffEntity staffEntity = new StaffEntity(player);
-        if (!staffEntity.isStaffMode()) {
-            staffEntity.setStaffMode(true);
-            player.sendMessage(ChatUtil.translate("&aNow you're in staff-mode!"));
-            return;
-        }
-        player.sendMessage(ChatUtil.translate("&cYou aren't in personal mode now!"));
-        staffEntity.setStaffMode(false);
     }
 }
