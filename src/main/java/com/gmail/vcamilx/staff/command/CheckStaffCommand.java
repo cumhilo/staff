@@ -28,7 +28,8 @@ public class CheckStaffCommand implements CommandExecutor {
                 return true;
             }
             
-            sender.sendMessage(ChatUtil.translate(Staff.getPlugin().getConfig().getString("messages.noPermission")));
+            sender.sendMessage(ChatUtil.translate(
+                    Staff.getPlugin().getConfig().getString("messages.other.noPermission")));
         }
         return false;
     }

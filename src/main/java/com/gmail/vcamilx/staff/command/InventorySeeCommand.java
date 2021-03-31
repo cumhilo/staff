@@ -13,7 +13,8 @@ public class InventorySeeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatUtil.translate(Staff.getPlugin().getConfig().getString("messages.noConsole")));
+            sender.sendMessage(ChatUtil.translate(
+                    Staff.getPlugin().getConfig().getString("messages.other.noConsole")));
             return true;
         }
 
