@@ -12,13 +12,12 @@ public final class Staff extends JavaPlugin {
     @Override
     public void onEnable() {
         Staff.plugin = this;
-        new StaffService().start();
         saveDefaultConfig();
+        new StaffService().start();
     }
 
     @Override
     public void onDisable() {
-        System.out.println("Plugin has been disabled");
         Staff.plugin = null;
     }
 }
