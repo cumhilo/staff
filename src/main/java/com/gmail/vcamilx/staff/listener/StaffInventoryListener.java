@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class StaffInventoryListener implements Listener {X
+public class StaffInventoryListener implements Listener {
     private void inventory() {
         /* In this method called inventory, all items will be created,
         which will be in the inventory of the staff mode. */
@@ -31,6 +31,16 @@ public class StaffInventoryListener implements Listener {X
 
         // Freeze item
 
+        ItemStack freeze = new ItemStack(Material.COMPASS);
+        ItemMeta freezeMeta = compass.getItemMeta();
 
+        Objects.requireNonNull(freezeMeta).setDisplayName(ChatUtil.color("&bFreeze machine"));
+        List<String> freezeLore = new ArrayList<>();
+
+        freezeLore.add(ChatUtil.color("&bFreeze anybody!"));
+
+        freezeMeta.setLore(freezeLore);
+
+        freeze.setItemMeta(freezeMeta);
     }
 }
