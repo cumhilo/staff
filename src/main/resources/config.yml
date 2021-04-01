@@ -1,6 +1,28 @@
+inventory:
+  staff:
+    item:
+      compass: "&c&lTeleport"
 messages:
   staff:
     chat: "&7(&9StaffChat&7) -> &b %player% &7-> &a%message%"
+    join:
+      title:
+        title: "&aNow you're in staff-mode!"
+        subtitle: "&eGood job! ;)"
+        # 20 Ticks = 1 Second
+        fadeIn: 15,
+        stay: 25,
+        fadeOut: 15,
+      chat: "&7(&9Staff&7) -> &aNow you're in staff-mode!"
+    leave:
+      title:
+        title: "&cYou aren't in staff mode now!"
+        subtitle: "&eGood job! ;)"
+        # 20 Ticks = 1 Second
+        fadeIn: 15,
+        stay: 25,
+        fadeOut: 15,
+      chat: "&7(&9Staff&7) -> &cYou aren't in staff mode now!"
   other:
     noConsole: "&cNo console command."
     noPermission: "&cYou do not have permissions to do this, please contact an administrator if you think it is an error."
