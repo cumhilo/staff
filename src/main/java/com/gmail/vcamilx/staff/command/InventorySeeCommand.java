@@ -13,7 +13,7 @@ public class InventorySeeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatUtil.translate(
+            sender.sendMessage(ChatUtil.color(
                     Staff.getPlugin().getConfig().getString("messages.other.noConsole")));
             return true;
         }
@@ -21,7 +21,7 @@ public class InventorySeeCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length != 1) {
-            player.sendMessage(ChatUtil.translate("&cUsage: " + label + " <player>"));
+            player.sendMessage(ChatUtil.color("&cUsage: " + label + " <player>"));
             return true;
         }
 
