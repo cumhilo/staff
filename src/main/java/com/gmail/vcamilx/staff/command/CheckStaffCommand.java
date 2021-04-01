@@ -32,7 +32,10 @@ public class CheckStaffCommand implements CommandExecutor {
             
             sender.sendMessage(ChatUtil.color(
                     Staff.getPlugin().getConfig().getString("messages.other.noPermission")));
+            return true;
         }
+
+        sender.sendMessage(ChatUtil.color("&cUsage: " + label + " <player>"));
         return false;
     }
 }
