@@ -1,46 +1,20 @@
 package com.gmail.vcamilx.staff.listener;
 
-import com.gmail.vcamilx.staff.util.chat.ChatUtil;
-import org.bukkit.Material;
+import com.gmail.vcamilx.staff.staff.Manager;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class StaffInventoryListener implements Listener {
-    private void inventory() {
-        /* In this method called inventory, all items will be created,
-        which will be in the inventory of the staff mode. */
+    private final Manager manager = new Manager();
 
-        // Compass item
+    @EventHandler
+    public void staffInventory(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
 
-        ItemStack compass = new ItemStack(Material.COMPASS);
-        ItemMeta compassMeta = compass.getItemMeta();
-
-        Objects.requireNonNull(compassMeta).setDisplayName(ChatUtil.color("&cCompass"));
-        List<String> compassLore = new ArrayList<>();
-
-        compassLore.add(ChatUtil.color("&bTeleport anywhere, as if you were using magic!"));
-
-        compassMeta.setLore(compassLore);
-
-        compass.setItemMeta(compassMeta);
-
-        // Freeze item
-
-        ItemStack freeze = new ItemStack(Material.COMPASS);
-        ItemMeta freezeMeta = compass.getItemMeta();
-
-        Objects.requireNonNull(freezeMeta).setDisplayName(ChatUtil.color("&bFreeze machine"));
-        List<String> freezeLore = new ArrayList<>();
-
-        freezeLore.add(ChatUtil.color("&bFreeze anybody!"));
-
-        freezeMeta.setLore(freezeLore);
-
-        freeze.setItemMeta(freezeMeta);
+        if (manager.isStaffMode(player)) {
+            event.setCancelled(true);
+        }
     }
 }
