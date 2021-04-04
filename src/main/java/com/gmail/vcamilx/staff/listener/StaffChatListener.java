@@ -6,23 +6,23 @@ import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.util.Objects;
-
 public class StaffChatListener implements Listener {
+    private final Manager manager = new Manager();
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onMessage(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if (Manager.isStaffChat(player)) {
-            for (Player staffs : Bukkit.getOnlinePlayers()) {
-                if (staffs.hasPermission("staff.chat")) {
-                    staffs.sendMessage(ChatUtil.color(
-                            Objects.requireNonNull(Staff.getPlugin().getConfig().getString("messages.staff.chat"))
+        if (manager.isStaffChat(player)) {
+            for (Player players : Bukkit.getOnlinePlayers()) {
+                if (players.hasPermission("staff.chat")) {
+                    players.sendMessage(ChatUtil.color(
+                            Staff.getPlugin().getConfig().getString("messages.staff.chat"))
                                     .replace("%player%", player.getName())
-                                            .replace("%message%", event.getMessage())));
+                                    .replace("%message%", event.getMessage()));
                 }
             }
             event.setCancelled(true);
