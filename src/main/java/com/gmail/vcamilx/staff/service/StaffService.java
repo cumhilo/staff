@@ -1,12 +1,22 @@
 package com.gmail.vcamilx.staff.service;
 
-import com.gmail.vcamilx.staff.service.implementation.CommandServiceImpl;
-import com.gmail.vcamilx.staff.service.implementation.ListenerServiceImpl;
+import me.yushust.inject.InjectAll;
 
+import javax.inject.Named;
+
+@InjectAll
 public class StaffService implements IService {
+
+    @Named("listener-service")
+    private IService listenerService;
+
+    @Named("command-service")
+    private IService commandServiceImpl;
+
+
     @Override
     public void start() {
-        new ListenerServiceImpl().start();
-        new CommandServiceImpl().start();
+        listenerService.start();
+        commandServiceImpl.start();
     }
 }

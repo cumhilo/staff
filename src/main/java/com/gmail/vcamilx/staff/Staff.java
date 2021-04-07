@@ -1,23 +1,24 @@
 package com.gmail.vcamilx.staff;
 
-import com.gmail.vcamilx.staff.service.StaffService;
-import lombok.Getter;
+import com.gmail.vcamilx.staff.module.MainModule;
+import com.gmail.vcamilx.staff.service.IService;
+import me.yushust.inject.Injector;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 public final class Staff extends JavaPlugin {
 
-    @Getter
-    private static Staff plugin;
+    @Inject
+    @Named("staff-service")
+    private IService staffService;
 
     @Override
     public void onEnable() {
-        Staff.plugin = this;
-        saveDefaultConfig();
-        new StaffService().start();
-    }
+        Injector injector = Injector.create(new MainModule(this));
+        injector.injectMembers(this);
 
-    @Override
-    public void onDisable() {
-        Staff.plugin = null;
+        staffService.start();
     }
 }
