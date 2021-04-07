@@ -56,6 +56,10 @@
 
     <repositories>
         <repository>
+            <id>unnamed-snapshots</id>
+            <url>https://repo.unnamed.team/repository/unnamed-snapshots/</url>
+        </repository>
+        <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
@@ -77,6 +81,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.18</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.yushust.inject</groupId>
+            <artifactId>core</artifactId>
+            <version>0.4.2-SNAPSHOT</version> <!--Check the latest version in the repositories-->
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
