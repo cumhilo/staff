@@ -8,8 +8,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class StaffBlockListener implements Listener {
-    private final Manager manager = new Manager();
+
+    @Inject
+    @Named("staff-manager")
+    private Manager manager;
 
     @EventHandler
     public void onPlaceBlock(BlockPlaceEvent event) {

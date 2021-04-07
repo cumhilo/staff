@@ -7,8 +7,14 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class StaffJoinListener implements Listener {
-    private final Manager manager = new Manager();
+
+    @Inject
+    @Named("staff-manager")
+    private Manager manager;
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void staffJoin(PlayerJoinEvent event) {

@@ -6,8 +6,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class StaffInventoryListener implements Listener {
-    private final Manager manager = new Manager();
+
+    @Inject
+    @Named("staff-manager")
+    private Manager manager;
 
     @EventHandler
     public void staffInventory(InventoryClickEvent event) {
