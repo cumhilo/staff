@@ -10,14 +10,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import javax.inject.Named;
-
 @InjectAll
 public class CheckStaffCommand implements CommandExecutor {
 
     private Staff staff;
-
-    @Named("staff-manager")
     private Manager manager;
 
     @Override
