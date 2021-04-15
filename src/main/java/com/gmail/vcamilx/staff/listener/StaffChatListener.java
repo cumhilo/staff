@@ -11,14 +11,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import javax.inject.Named;
-
 @InjectAll
 public class StaffChatListener implements Listener {
 
     private Staff staff;
-
-    @Named("staff-manager")
     private Manager manager;
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -33,6 +29,7 @@ public class StaffChatListener implements Listener {
                             .replace("%message%", event.getMessage()));
                 }
             }
+
             event.setCancelled(true);
         }
     }

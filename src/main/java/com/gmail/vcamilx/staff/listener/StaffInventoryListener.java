@@ -1,18 +1,15 @@
 package com.gmail.vcamilx.staff.listener;
 
 import com.gmail.vcamilx.staff.staff.Manager;
+import me.yushust.inject.InjectAll;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
+@InjectAll
 public class StaffInventoryListener implements Listener {
 
-    @Inject
-    @Named("staff-manager")
     private Manager manager;
 
     @EventHandler
