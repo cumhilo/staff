@@ -12,6 +12,7 @@ public class StorageModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(new TypeReference<IStorage<UUID, ItemStack[]>>(){}).named("staff-manager").to(ManagerStorage.class).singleton();
+        bind(new TypeReference<IStorage<UUID, ItemStack[]>>() {
+        }).named("staff-storage").to(ManagerStorage.class).singleton();
     }
 }
