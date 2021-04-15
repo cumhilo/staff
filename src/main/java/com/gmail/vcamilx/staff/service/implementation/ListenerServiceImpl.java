@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 
 @InjectAll
 public class ListenerServiceImpl implements IService {
+
     private Staff staff;
     private StaffBlockListener staffBlockListener;
     private StaffChatListener staffChatListener;
@@ -28,8 +29,7 @@ public class ListenerServiceImpl implements IService {
                 staffBlockListener,
                 staffChatListener,
                 staffInteractListener,
-                staffInventoryListener,
-                staffJoinListener
+                staffInventoryListener
         );
     }
 }
