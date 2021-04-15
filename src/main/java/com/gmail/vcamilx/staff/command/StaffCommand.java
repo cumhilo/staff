@@ -17,7 +17,7 @@ public class StaffCommand implements CommandExecutor {
 
     private Staff staff;
 
-    @Named("staff-manager")
+    @Named("staff-storage")
     private Manager manager;
 
     @Override
@@ -39,21 +39,12 @@ public class StaffCommand implements CommandExecutor {
         if (args.length >= 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target != null) {
-                if (!manager.isStaffMode(target)) {
-                    manager.setStaff(target);
-                    return true;
-                }
-
-                manager.disableStaff(target);
+                manager.setStaff(target);
                 return true;
             }
         }
-        if (!manager.isStaffMode(player)) {
-            manager.setStaff(player);
-            return true;
-        }
 
-        manager.disableStaff(player);
+        manager.setStaff(player);
         return false;
     }
 }
