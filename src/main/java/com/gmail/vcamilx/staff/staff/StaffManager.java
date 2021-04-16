@@ -4,27 +4,24 @@ import com.gmail.vcamilx.staff.Staff;
 import com.gmail.vcamilx.staff.staff.inventory.StaffInventory;
 import com.gmail.vcamilx.staff.util.cache.implemenatation.ManagerStorage;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
-import me.yushust.inject.InjectAll;
-import me.yushust.inject.InjectIgnore;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-import javax.inject.Named;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@InjectAll
-public class Manager {
+public class StaffManager {
 
+    private static final List<UUID> staffChat = new ArrayList<>();
+    private static final ManagerStorage managerStorage = new ManagerStorage();
+    private final StaffInventory staffInventory = new StaffInventory();
+
+    @Inject
     private Staff staff;
-
-    @InjectIgnore private final StaffInventory staffInventory = new StaffInventory();
-    @InjectIgnore private static final List<UUID> staffChat = new ArrayList<>();
-
-    @Named("manager-storage")
-    private ManagerStorage managerStorage;
 
     public void setStaff(Player player) {
         if (!isStaffMode(player)) {
@@ -52,7 +49,6 @@ public class Manager {
         });
 
         player.setGameMode(GameMode.SURVIVAL);
-
         setVanish(player);
 
         player.sendTitle(
@@ -90,7 +86,11 @@ public class Manager {
         return staffChat.contains(player.getUniqueId());
     }
 
-    public boolean isStaffMode(Player player) {
-        return managerStorage.exists(player.getUniqueId());
+    public boolean isStaffMode(Entity player) {
+        return getManagerStorage().exists(player.getUniqueId());
+    }
+
+    public ManagerStorage getManagerStorage() {
+        return managerStorage;
     }
 }
