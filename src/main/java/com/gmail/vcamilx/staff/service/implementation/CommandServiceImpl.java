@@ -1,7 +1,11 @@
 package com.gmail.vcamilx.staff.service.implementation;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.command.*;
+import com.gmail.vcamilx.staff.command.CheckStaffCommand;
+import com.gmail.vcamilx.staff.command.FreezeCommand;
+import com.gmail.vcamilx.staff.command.InventorySeeCommand;
+import com.gmail.vcamilx.staff.command.StaffChatCommand;
+import com.gmail.vcamilx.staff.command.StaffCommand;
 import com.gmail.vcamilx.staff.service.IService;
 import me.yushust.inject.InjectAll;
 

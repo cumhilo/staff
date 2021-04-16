@@ -1,7 +1,14 @@
 package com.gmail.vcamilx.staff.service.implementation;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.listener.staff.*;
+import com.gmail.vcamilx.staff.listener.staff.StaffBreakBlockEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffChatEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffDropItemEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractEntityEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffPlaceBlockEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDropItemEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeMoveListener;
@@ -20,7 +27,7 @@ public class ListenerServiceImpl implements IService {
     private StaffChatEvent staffChatEvent;
     private StaffDropItemEvent staffDropItemEvent;
     private StaffInteractInventoryEvent staffInteractInventoryEvent;
-    private StaffInteractListener staffInteractListener;
+    private StaffInteractEntityEvent staffInteractEntityEvent;
     private StaffJoinListener staffJoinListener;
     private StaffPickUpItemEvent staffPickUpItemEvent;
     private StaffPlaceBlockEvent staffPlaceBlockEvent;
@@ -42,7 +49,8 @@ public class ListenerServiceImpl implements IService {
                 staffBreakBlockEvent,
                 staffChatEvent,
                 staffDropItemEvent,
-                staffInteractListener,
+                staffInteractInventoryEvent,
+                staffInteractEntityEvent,
                 staffJoinListener,
                 staffPickUpItemEvent,
                 staffPlaceBlockEvent,
