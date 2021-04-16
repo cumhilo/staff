@@ -16,11 +16,10 @@ public final class Staff extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
-
         Injector injector = Injector.create(new MainModule(this));
         injector.injectMembers(this);
 
+        saveDefaultConfig();
         staffService.start();
     }
 }
