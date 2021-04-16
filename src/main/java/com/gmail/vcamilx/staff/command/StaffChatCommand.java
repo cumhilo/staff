@@ -1,7 +1,7 @@
 package com.gmail.vcamilx.staff.command;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.staff.Manager;
+import com.gmail.vcamilx.staff.staff.StaffManager;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import me.yushust.inject.InjectAll;
 import org.bukkit.Bukkit;
@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class StaffChatCommand implements CommandExecutor {
 
     private Staff staff;
-    private Manager manager;
+    private StaffManager staffManager;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -34,12 +34,12 @@ public class StaffChatCommand implements CommandExecutor {
         if (args.length >= 1) {
             Player target = Bukkit.getPlayer(args[0]);
             if (target != null) {
-                manager.setStaffChat(target);
+                staffManager.setStaffChat(target);
                 return true;
             }
         }
 
-        manager.setStaffChat(player);
+        staffManager.setStaffChat(player);
         return false;
     }
 }
