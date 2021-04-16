@@ -9,9 +9,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 @InjectAll
-public class StaffInteractListener implements Listener {
+public class StaffInteractEntityEvent implements Listener {
 
     private StaffManager staffManager;
     private FreezeManager freezeManager;
@@ -20,15 +22,23 @@ public class StaffInteractListener implements Listener {
     public void interaction(PlayerInteractAtEntityEvent event) {
         Player player = event.getPlayer();
         Entity target = event.getRightClicked();
-
+        ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
         if (!staffManager.isStaffMode(player)) return;
         if (!(target instanceof Player)) return;
 
-        if (player.getInventory().getItemInMainHand().getType() == Material.ICE) {
-            if (!staffManager.isStaffMode(target)) {
-                freezeManager.setFrozenState((Player) target, player);
-            }
+        if (itemInHand.getType() == Material.ICE && !staffManager.isStaffMode(target)) {
+            freezeManager.setFrozenState((Player) target, player);
         }
+
+        if (itemInHand.getType() == Material.BOOK) {
+            openPlayerInventory(player, (Player) target);
+        }
+
+    }
+
+    private void openPlayerInventory(Player sender, Player target) {
+        Inventory inventory = target.getInventory();
+        sender.openInventory(inventory);
     }
 }
