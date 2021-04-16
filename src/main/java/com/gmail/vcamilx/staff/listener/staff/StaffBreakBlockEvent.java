@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class StaffBreakBlockEvent implements Listener {
 
     @Inject
-    StaffManager staffManager;
+    private StaffManager staffManager;
 
     @EventHandler
     public void onBreakBlock(BlockBreakEvent event) {
