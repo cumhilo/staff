@@ -9,6 +9,9 @@ commands:
   check:
     description: Check if a Staff is currently online
     aliases: [ 'isOnline' ]
+  freeze:
+    description: Freeze a player
+    aliases: [ 'ss', 'froze' ]
   inventorysee:
     description: See a player inventory
     aliases: [ 'invsee' ]
