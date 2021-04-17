@@ -1,6 +1,5 @@
 package com.gmail.vcamilx.staff.command;
 
-import com.gmail.vcamilx.staff.Staff;
 import com.gmail.vcamilx.staff.staff.FreezeManager;
 import me.yushust.inject.InjectAll;
 import org.bukkit.Bukkit;
@@ -9,11 +8,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@InjectAll
+import javax.inject.Inject;
+
 public class FreezeCommand implements CommandExecutor {
 
+    @Inject
     private FreezeManager freezeManager;
-    private Staff staff;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
