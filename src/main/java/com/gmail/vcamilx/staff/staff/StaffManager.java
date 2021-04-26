@@ -86,7 +86,7 @@ public class StaffManager {
         return staffChat.contains(player.getUniqueId());
     }
 
-    public boolean isStaffMode(Entity player) {
+    public boolean isStaffMode(Player player) {
         return getManagerStorage().exists(player.getUniqueId());
     }
 
