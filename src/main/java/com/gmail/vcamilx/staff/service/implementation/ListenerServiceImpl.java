@@ -4,11 +4,13 @@ import com.gmail.vcamilx.staff.Staff;
 import com.gmail.vcamilx.staff.listener.staff.StaffBreakBlockEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffChatEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffDropItemEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffInteractEntityEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffPlaceBlockEvent;
+import com.gmail.vcamilx.staff.listener.user.FreezeDamageByEntityEvent;
+import com.gmail.vcamilx.staff.listener.user.FreezeDamageEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDropItemEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeMoveListener;
@@ -32,6 +34,8 @@ public class ListenerServiceImpl implements IService {
     private StaffPickUpItemEvent staffPickUpItemEvent;
     private StaffPlaceBlockEvent staffPlaceBlockEvent;
 
+    private FreezeDamageByEntityEvent freezeDamageByEntityEvent;
+    private FreezeDamageEvent freezeDamageEvent;
     private FreezeDropItemEvent freezeDropItemEvent;
     private FreezeInteractInventoryEvent freezeInteractInventoryEvent;
     private FreezeMoveListener freezeMoveListener;
@@ -54,6 +58,8 @@ public class ListenerServiceImpl implements IService {
                 staffJoinListener,
                 staffPickUpItemEvent,
                 staffPlaceBlockEvent,
+                freezeDamageByEntityEvent,
+                freezeDamageEvent,
                 freezeDropItemEvent,
                 freezeInteractInventoryEvent,
                 freezeMoveListener,
