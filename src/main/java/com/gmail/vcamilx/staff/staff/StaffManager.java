@@ -6,7 +6,6 @@ import com.gmail.vcamilx.staff.util.cache.implemenatation.ManagerStorage;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import javax.inject.Inject;

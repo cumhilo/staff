@@ -17,8 +17,6 @@ public class FreezeInteractInventoryEvent implements Listener {
     public void interactInventory(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
-        if (freezeManager.isFrozenState(player)) return;
-
-        event.setCancelled(true);
+        if (!freezeManager.isFrozenState(player)) event.setCancelled(true);
     }
 }
