@@ -9,12 +9,14 @@ import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffPlaceBlockEvent;
+import com.gmail.vcamilx.staff.listener.user.FreezeBreakBlockEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDamageByEntityEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDamageEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDropItemEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeMoveListener;
 import com.gmail.vcamilx.staff.listener.user.FreezePickUpItemEvent;
+import com.gmail.vcamilx.staff.listener.user.FreezeProjectileEvent;
 import com.gmail.vcamilx.staff.service.IService;
 import me.yushust.inject.InjectAll;
 import org.bukkit.Bukkit;
@@ -34,12 +36,14 @@ public class ListenerServiceImpl implements IService {
     private StaffPickUpItemEvent staffPickUpItemEvent;
     private StaffPlaceBlockEvent staffPlaceBlockEvent;
 
+    private FreezeBreakBlockEvent freezeBreakBlockEvent;
     private FreezeDamageByEntityEvent freezeDamageByEntityEvent;
     private FreezeDamageEvent freezeDamageEvent;
     private FreezeDropItemEvent freezeDropItemEvent;
     private FreezeInteractInventoryEvent freezeInteractInventoryEvent;
     private FreezeMoveListener freezeMoveListener;
     private FreezePickUpItemEvent freezePickUpItemEvent;
+    private FreezeProjectileEvent freezeProjectileEvent;
 
     private void registerListener(Listener... listeners) {
         for (Listener listener : listeners) {
@@ -58,12 +62,14 @@ public class ListenerServiceImpl implements IService {
                 staffJoinListener,
                 staffPickUpItemEvent,
                 staffPlaceBlockEvent,
+                freezeBreakBlockEvent,
                 freezeDamageByEntityEvent,
                 freezeDamageEvent,
                 freezeDropItemEvent,
                 freezeInteractInventoryEvent,
                 freezeMoveListener,
-                freezePickUpItemEvent
+                freezePickUpItemEvent,
+                freezeDamageEvent
         );
     }
 }

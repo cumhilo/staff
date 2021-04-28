@@ -18,7 +18,7 @@ public class StaffBreakBlockEvent implements Listener {
     public void onBreakBlock(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (staffManager.isStaffMode(player)) {
-            player.sendMessage(ChatUtil.color("&cYou cannot break bocks when you are in staff mode!"));
+            player.sendMessage(ChatUtil.color("&cYou cannot break blocks when you are in staff mode!"));
             event.setCancelled(true);
         }
     }
