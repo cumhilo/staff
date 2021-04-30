@@ -1,7 +1,6 @@
 package com.gmail.vcamilx.staff.listener.user;
 
 import com.gmail.vcamilx.staff.staff.FreezeManager;
-import com.gmail.vcamilx.staff.staff.StaffManager;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
