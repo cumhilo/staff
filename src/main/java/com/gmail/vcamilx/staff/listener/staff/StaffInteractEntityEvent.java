@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -24,6 +25,7 @@ public class StaffInteractEntityEvent implements Listener {
 
         if (!staffManager.isStaffMode(player)) return;
         if (!(event.getRightClicked() instanceof Player)) return;
+        if (event.getHand() != EquipmentSlot.HAND) return;
 
         Player target = (Player) event.getRightClicked();
 
@@ -34,7 +36,6 @@ public class StaffInteractEntityEvent implements Listener {
         if (itemInHand.getType() == Material.BOOK) {
             openPlayerInventory(player, target);
         }
-
     }
 
     private void openPlayerInventory(Player sender, Player target) {
