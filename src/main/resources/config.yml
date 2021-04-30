@@ -51,6 +51,13 @@ messages:
         stay: 25
         fadeOut: 15
       chat: "&7(&9Staff&7) -> &cYou aren't in staff mode now!"
+    list:
+      - ""
+      - "&7&m                                  "
+      - "&b» &9&lOnline staffs:"
+      - " &b» &a%staffs%"
+      - "&7&m                                  "
+      - ""
   other:
     noConsole: "&cNo console command."
     noPermission: "&cYou do not have permissions to do this, please contact an administrator if you think it is an error."
