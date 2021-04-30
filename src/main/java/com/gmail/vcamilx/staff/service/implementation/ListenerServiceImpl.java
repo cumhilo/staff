@@ -5,6 +5,7 @@ import com.gmail.vcamilx.staff.listener.staff.StaffBreakBlockEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffChatEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffDropItemEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffInteractEntityEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemEvent;
@@ -23,6 +24,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 @InjectAll
+@SuppressWarnings("unused")
 public class ListenerServiceImpl implements IService {
 
     private Staff staff;
@@ -31,6 +33,7 @@ public class ListenerServiceImpl implements IService {
     private StaffChatEvent staffChatEvent;
     private StaffDropItemEvent staffDropItemEvent;
     private StaffInteractInventoryEvent staffInteractInventoryEvent;
+    private StaffInteractEvent staffInteractEvent;
     private StaffInteractEntityEvent staffInteractEntityEvent;
     private StaffJoinListener staffJoinListener;
     private StaffPickUpItemEvent staffPickUpItemEvent;
@@ -58,6 +61,7 @@ public class ListenerServiceImpl implements IService {
                 staffChatEvent,
                 staffDropItemEvent,
                 staffInteractInventoryEvent,
+                staffInteractEvent,
                 staffInteractEntityEvent,
                 staffJoinListener,
                 staffPickUpItemEvent,
