@@ -62,11 +62,12 @@ public class StaffManager {
 
     private void setVanish(Player player) {
         for (Player players : Bukkit.getOnlinePlayers()) {
-            if (!players.hasPermission("staff.mode") && players.canSee(player)) {
-                players.hidePlayer(staff, player);
+            if (!players.hasPermission("staff.mode") && !players.canSee(player)) {
+                players.showPlayer(staff, player);
                 return;
             }
-            players.showPlayer(staff, player);
+
+            players.hidePlayer(staff, player);
         }
     }
 
