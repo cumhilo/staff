@@ -7,15 +7,13 @@ import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class StaffManager {
 
-    private static final List<UUID> staffChat = new ArrayList<>();
+
     private static final ManagerStorage managerStorage = new ManagerStorage();
     private final StaffInventory staffInventory = new StaffInventory();
 
@@ -61,29 +59,29 @@ public class StaffManager {
     }
 
     private void setVanish(Player player) {
-        for (Player players : Bukkit.getOnlinePlayers()) {
-            if (!players.hasPermission("staff.mode") && !players.canSee(player)) {
-                players.showPlayer(staff, player);
+        Bukkit.getOnlinePlayers().forEach(player1 -> {
+            if (!player1.hasPermission("staff.mode") && !player1.canSee(player)) {
+                player1.showPlayer(staff, player);
                 return;
             }
 
-            players.hidePlayer(staff, player);
-        }
+            player1.hidePlayer(staff, player);
+        });
     }
 
     public void setStaffChat(Player player) {
         if (!isStaffChat(player)) {
-            staffChat.add(player.getUniqueId());
+            player.setMetadata("staff-chat", new FixedMetadataValue(staff, true));
             player.sendMessage(ChatUtil.color("&bNow you're in staff-chat!"));
             return;
         }
 
-        staffChat.remove(player.getUniqueId());
+        player.removeMetadata("staff-chat", staff);
         player.sendMessage(ChatUtil.color("&cYou aren't in staff chat now!"));
     }
 
     public boolean isStaffChat(Player player) {
-        return staffChat.contains(player.getUniqueId());
+        return player.hasMetadata("staff-chat");
     }
 
     public boolean isStaffMode(Player player) {
