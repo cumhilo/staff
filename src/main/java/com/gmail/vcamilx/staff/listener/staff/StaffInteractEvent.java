@@ -12,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -33,25 +32,30 @@ public class StaffInteractEvent implements Listener {
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
         if (!staffManager.isStaffMode(player)) return;
-        if (event.getHand() != EquipmentSlot.HAND) return;
-        if (event.getAction() != Action.RIGHT_CLICK_AIR || event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR)
 
-        if (itemInHand.getType() == Material.PLAYER_HEAD) {
             if (itemInHand.getType() == Material.PLAYER_HEAD) {
+                if (itemInHand.getType() == Material.PLAYER_HEAD) {
 
-                Bukkit.getOnlinePlayers().forEach(player1 -> {
-                    if (player1.hasPermission("staff")) staffList.add(player1.getName());
-                });
+                    Bukkit.getOnlinePlayers().forEach(player1 -> {
+                        if (player1.hasPermission("staff") && !staffList.contains(player1.getName()))
+                            staffList.add(player1.getName());
 
-                StringBuilder stringBuilder = new StringBuilder();
+                        if (!player1.isOnline()) staffList.remove(player1.getName());
+                    });
 
-                staffList.forEach(s -> stringBuilder.append(s).append(", "));
+                    StringBuilder stringBuilder = new StringBuilder();
 
-                for (String message : staff.getConfig().getStringList("messages.staff.list")) {
-                    player.sendMessage(ChatUtil.color(message)
-                            .replaceAll("%staffs%", stringBuilder.toString()));
+                    staffList.forEach(s -> stringBuilder.append(s).append(", "));
+
+                    for (String message : staff.getConfig().getStringList("messages.staff.list")) {
+                        player.sendMessage(ChatUtil.color(message)
+                                .replaceAll("%staffs%", stringBuilder.toString()));
+                    }
                 }
+
+
+                event.setCancelled(true);
             }
-        }
     }
 }
