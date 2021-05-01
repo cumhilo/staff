@@ -18,29 +18,45 @@ public class CheckStaffCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.hasPermission("staff.check")) {
-            if (args.length >= 1) {
+        if (!(sender instanceof Player)) return false;
 
-                Player target = Bukkit.getPlayer(args[0]);
-                if (target != null) {
-                    if (!staffManager.isStaffMode(target)) {
-                        sender.sendMessage(ChatUtil.color("&c" + target.getName() + " it's not in staff mode."));
-                        return true;
-                    }
-                    sender.sendMessage(ChatUtil.color("&a" + target.getName() + " it's in staff mode."));
-                    return true;
-                }
+        Player player = (Player) sender;
 
-                sender.sendMessage(ChatUtil.color("&c" + args[0] + " is currently offline."));
-                return true;
-            }
-
-            sender.sendMessage(ChatUtil.color("&cUsage: " + label + " <player>"));
-            return false;
+        if (args.length >= 1) {
+            Player target = Bukkit.getPlayer(args[0]);
+            checkStaffMode(player, target, args);
         }
 
-        sender.sendMessage(ChatUtil.color(
-                staff.getConfig().getString("messages.other.noPermission")));
+        checkStaffMode(player, player, args);
         return false;
+    }
+
+    private void checkStaffMode(Player player, Player target, String[] args) {
+        if (!player.hasPermission("staff.check")) {
+            player.sendMessage(ChatUtil.color(
+                    staff.getConfig().getString("messages.other.noPermission")));
+        }
+
+        if (args.length != 1) {
+            if (!staffManager.isStaffMode(player)) {
+                player.sendMessage(ChatUtil.color("&c" + player.getName() + " it's not in staff mode."));
+                return;
+            }
+
+            player.sendMessage(ChatUtil.color("&a" + player.getName() + " it's in staff mode."));
+            return;
+        }
+
+        if (target != null) {
+            if (!staffManager.isStaffMode(target)) {
+                player.sendMessage(ChatUtil.color("&c" + target.getName() + " it's not in staff mode."));
+                return;
+            }
+
+            player.sendMessage(ChatUtil.color("&a" + target.getName() + " it's in staff mode."));
+            return;
+        }
+
+        player.sendMessage(ChatUtil.color("&c" + args[0] + " is currently offline."));
     }
 }
