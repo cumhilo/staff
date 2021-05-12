@@ -26,7 +26,7 @@ public class StaffInventory {
         ItemStack compass = ItemBuilder
                 .newBuilder(Material.COMPASS)
                 .setName(ChatUtil.color("&9 » &b&lCompass &9 «"))
-                .setLore("", "&7Teleport anywhere, as if you were using magic!", "")
+                .setLore("", "Teleport anywhere, as if you were using magic!", "")
                 .build();
 
         player.getInventory().setItem(0, compass);
