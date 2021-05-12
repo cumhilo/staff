@@ -16,29 +16,26 @@ public class FreezeManager {
         if (isFrozenState(player)) {
             player.setMetadata("freeze", new FixedMetadataValue(staff, true));
 
-            for (String freezeMessage : staff.getConfig().getStringList("messages.freeze.target.freeze")) {
-                player.sendMessage(ChatUtil.color(freezeMessage)
-                        .replaceAll("%frozen%", player.getName()));
-            }
+            staff.getConfig().getStringList("messages.freeze.target.freeze")
+                    .forEach(s -> player.sendMessage(ChatUtil.color(s)
+                            .replaceAll("%frozen%", player.getName())));
 
-            for (String freezeMessage : staff.getConfig().getStringList("messages.freeze.staff.freeze")) {
-                freezer.sendMessage(ChatUtil.color(freezeMessage)
-                        .replaceAll("%frozen%", player.getName())
-                        .replaceAll("%staff%", freezer.getName()));
-            }
+            staff.getConfig().getStringList("messages.freeze.staff.freeze")
+                    .forEach(s -> freezer.sendMessage(ChatUtil.color(s)
+                            .replaceAll("%frozen%", player.getName())
+                            .replaceAll("%staff%", freezer.getName())));
 
             return;
         }
 
-        for (String freezeMessage : staff.getConfig().getStringList("messages.freeze.target.unfreeze")) {
-            player.sendMessage(ChatUtil.color(freezeMessage)
-                    .replaceAll("%frozen%", player.getName()));
-        }
+        staff.getConfig().getStringList("messages.freeze.target.unfreeze")
+                .forEach(s -> player.sendMessage(ChatUtil.color(s)
+                        .replaceAll("%frozen%", player.getName())));
 
-        for (String freezeMessage : staff.getConfig().getStringList("messages.freeze.staff.unfreeze")) {
-            freezer.sendMessage(ChatUtil.color(freezeMessage)
-                    .replaceAll("%frozen%", player.getName()));
-        }
+
+        staff.getConfig().getStringList("messages.freeze.staff.unfreeze")
+                .forEach(s -> freezer.sendMessage(ChatUtil.color(s)
+                        .replaceAll("%frozen%", player.getName())));
 
         player.removeMetadata("freeze", staff);
     }
