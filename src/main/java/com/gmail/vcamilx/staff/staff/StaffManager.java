@@ -13,7 +13,6 @@ import javax.inject.Inject;
 
 public class StaffManager {
 
-
     private static final ManagerStorage managerStorage = new ManagerStorage();
     private final StaffInventory staffInventory = new StaffInventory();
 
