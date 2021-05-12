@@ -4,96 +4,73 @@ import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import team.unnamed.gui.core.item.type.ItemBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.Collection;
 
 public class StaffInventory {
+
+    /**
+     * The inventory method, inventory is a small "utility" for the StaffManager class
+     *
+     * @param player who, in turn, is the player to whom the staff-mode items will be applied.
+     * @see com.gmail.vcamilx.staff.staff.StaffManager
+     * <p>
+     * and it accepts as input parameter
+     */
+
     public void inventory(Player player) {
         /* In this method called inventory, all items will be created,
         which will be in the inventory of the staff mode. */
 
-        // Compass item
+        // Compass item 🕊
 
-        ItemStack compass = new ItemStack(Material.COMPASS);
-        ItemMeta compassMeta = compass.getItemMeta();
-
-        Objects.requireNonNull(compassMeta).setDisplayName(ChatUtil.color("&cCompass"));
-        List<String> compassLore = new ArrayList<>();
-
-        compassLore.add(ChatUtil.color("&eTeleport anywhere, as if you were using magic!"));
-
-        compassMeta.setLore(compassLore);
-
-        compass.setItemMeta(compassMeta);
+        ItemStack compass = ItemBuilder
+                .newBuilder(Material.COMPASS)
+                .setName(ChatUtil.color("&9 » &b&lCompass &9 «"))
+                .setLore(ChatUtil.colorArrays("", "&7Teleport anywhere, as if you were using magic!", ""))
+                .build();
 
         player.getInventory().setItem(0, compass);
 
-        // Freeze item
+        // Freeze item 🥶
 
-        ItemStack freeze = new ItemStack(Material.ICE);
-        ItemMeta freezeMeta = freeze.getItemMeta();
+        ItemStack ice = ItemBuilder
+                .newBuilder(Material.ICE)
+                .setName(ChatUtil.color("&9 » &bFreeze machine &9 «"))
+                .setLore("", "Freeze anybody!", "")
+                .build();
 
-        Objects.requireNonNull(freezeMeta).setDisplayName(ChatUtil.color("&cFreeze machine"));
-        List<String> freezeLore = new ArrayList<>();
+        player.getInventory().setItem(1, ice);
 
-        freezeLore.add(ChatUtil.color("&eFreeze anybody!"));
+        // Inventory see item 🔎
 
-        freezeMeta.setLore(freezeLore);
+        ItemStack book = ItemBuilder
+                .newBuilder(Material.BOOK)
+                .setName(ChatUtil.color("&9 » &bInventory inspector &9 «"))
+                .setLore("", "See a player inventory!", "")
+                .build();
 
-        freeze.setItemMeta(freezeMeta);
+        player.getInventory().setItem(4, book);
 
-        player.getInventory().setItem(1, freeze);
+        // Staff list item 📃
 
+        ItemStack playerHead = ItemBuilder
+                .newBuilder(Material.PLAYER_HEAD)
+                .setName(ChatUtil.color("&9 » &bOnline staff &9 «"))
+                .setLore("", "Staff online list!", "")
+                .build();
 
-        // Inventory see item
+        player.getInventory().setItem(7, playerHead);
 
-        ItemStack inventory = new ItemStack(Material.BOOK);
-        ItemMeta inventoryMeta = inventory.getItemMeta();
+        // Random teleport item 🪁
 
-        Objects.requireNonNull(inventoryMeta).setDisplayName(ChatUtil.color("&cInventory inspector"));
-        List<String> inventoryLore = new ArrayList<>();
+        ItemStack enderEye = ItemBuilder
+                .newBuilder(Material.ENDER_EYE)
+                .setName(ChatUtil.color("&9 » &bRandom teleport &9 «"))
+                .setLore("", "Teleport randomly!", "")
+                .build();
 
-        inventoryLore.add(ChatUtil.color("&eSee a player inventory!"));
-
-        inventoryMeta.setLore(inventoryLore);
-
-        inventory.setItemMeta(inventoryMeta);
-
-        player.getInventory().setItem(4, inventory);
-
-        // Staff list item
-
-        ItemStack staff = new ItemStack(Material.PLAYER_HEAD);
-        ItemMeta staffMeta = staff.getItemMeta();
-
-        Objects.requireNonNull(staffMeta).setDisplayName(ChatUtil.color("&cOnline staff"));
-        List<String> staffLore = new ArrayList<>();
-
-        staffLore.add(ChatUtil.color("&eStaff online list!"));
-
-        staffMeta.setLore(staffLore);
-
-        staff.setItemMeta(staffMeta);
-
-        player.getInventory().setItem(7, staff);
-
-        // Random teleport item
-
-        ItemStack teleport = new ItemStack(Material.ENDER_EYE);
-        ItemMeta teleportMeta = teleport.getItemMeta();
-
-        Objects.requireNonNull(teleportMeta).setDisplayName(ChatUtil.color("&cRandom teleport"));
-        List<String> teleportLore = new ArrayList<>();
-
-        teleportLore.add(ChatUtil.color("&eTeleport randomly!"));
-
-        teleportMeta.setLore(teleportLore);
-
-        teleport.setItemMeta(teleportMeta);
-
-        player.getInventory().setItem(8, teleport);
+        player.getInventory().setItem(8, enderEye);
     }
 }
