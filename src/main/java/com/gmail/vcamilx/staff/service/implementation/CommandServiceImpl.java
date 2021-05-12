@@ -10,6 +10,7 @@ import com.gmail.vcamilx.staff.service.IService;
 import me.yushust.inject.InjectAll;
 
 @InjectAll
+@SuppressWarnings("unused")
 public class CommandServiceImpl implements IService {
 
     private Staff staff;
