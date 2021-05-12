@@ -13,7 +13,6 @@ public class StaffService implements IService {
     @Named("command-service")
     private IService commandServiceImpl;
 
-
     @Override
     public void start() {
         listenerService.start();
