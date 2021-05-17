@@ -8,13 +8,13 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import javax.inject.Inject;
 
-public class FreezeInteractInventoryEvent implements Listener {
+public class FreezeInventoryClickListener implements Listener {
 
     @Inject
     private FreezeManager freezeManager;
 
     @EventHandler
-    public void interactInventory(InventoryClickEvent event) {
+    public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
         if (!freezeManager.isFrozenState(player)) event.setCancelled(true);

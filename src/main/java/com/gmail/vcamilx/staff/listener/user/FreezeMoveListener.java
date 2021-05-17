@@ -17,7 +17,7 @@ public class FreezeMoveListener implements Listener {
     private Staff staff;
 
     @EventHandler
-    public void playerMove(PlayerMoveEvent event) {
+    public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
         Location eventFrom = event.getFrom();

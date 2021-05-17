@@ -10,13 +10,13 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 
 import javax.inject.Inject;
 
-public class FreezeProjectileEvent implements Listener {
+public class FreezeProjectileLaunchEvent implements Listener {
 
     @Inject
     private FreezeManager freezeManager;
 
     @EventHandler
-    public void processProjectile(ProjectileLaunchEvent event) {
+    public void onProjectileLaunch(ProjectileLaunchEvent event) {
 
         Projectile projectile = event.getEntity();
 

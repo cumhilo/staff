@@ -1,21 +1,20 @@
 package com.gmail.vcamilx.staff.listener.staff;
 
 import com.gmail.vcamilx.staff.staff.StaffManager;
+import me.yushust.inject.InjectAll;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 
-import javax.inject.Inject;
+@InjectAll
+public class StaffInventoryClickListener implements Listener {
 
-public class StaffDropItemEvent implements Listener {
-
-    @Inject
     private StaffManager staffManager;
 
     @EventHandler
-    public void onDropItem(PlayerDropItemEvent event) {
-        Player player = event.getPlayer();
+    public void onInventoryClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
 
         if (!staffManager.isStaffMode(player)) return;
 

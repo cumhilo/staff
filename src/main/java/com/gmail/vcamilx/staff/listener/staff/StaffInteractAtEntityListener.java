@@ -13,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @InjectAll
-public class StaffInteractAtEntityEvent implements Listener {
+public class StaffInteractAtEntityListener implements Listener {
 
     private StaffManager staffManager;
     private FreezeManager freezeManager;
