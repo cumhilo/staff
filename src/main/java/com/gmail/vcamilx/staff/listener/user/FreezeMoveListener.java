@@ -30,7 +30,7 @@ public class FreezeMoveListener implements Listener {
 
             for (String freezeMessage : staff.getConfig().getStringList("messages.freeze.target.freeze")) {
                 player.sendMessage(ChatUtil.color(freezeMessage)
-                        .replaceAll("%frozen%", player.getName()));
+                        .replace("%frozen%", player.getName()));
             }
         }
     }
