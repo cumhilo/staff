@@ -61,9 +61,9 @@ public class ListenerServiceImpl implements IService {
             staffChatListener,
             staffDropItemListener,
             staffInventoryClickListener,
-                staffInteractEvent,
+            staffInteractEvent,
             staffInteractAtEntityListener,
-                staffJoinListener,
+            staffJoinListener,
             staffPickUpItemListener,
             staffBlockPlaceListener,
             freezeBreakBlockListener,
@@ -71,7 +71,7 @@ public class ListenerServiceImpl implements IService {
             freezeDamageListener,
             freezeDropItemListener,
             freezeInventoryClickListener,
-                freezeMoveListener,
+            freezeMoveListener,
             freezePickUpItemListener,
             freezeDamageListener
         );
