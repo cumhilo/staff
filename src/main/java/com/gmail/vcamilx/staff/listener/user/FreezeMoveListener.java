@@ -17,7 +17,7 @@ public class FreezeMoveListener implements Listener {
     private Staff staff;
 
     @EventHandler
-    public void playerMove(PlayerMoveEvent event) {
+    public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
         Location eventFrom = event.getFrom();
@@ -30,7 +30,7 @@ public class FreezeMoveListener implements Listener {
 
             for (String freezeMessage : staff.getConfig().getStringList("messages.freeze.target.freeze")) {
                 player.sendMessage(ChatUtil.color(freezeMessage)
-                        .replaceAll("%frozen%", player.getName()));
+                        .replace("%frozen%", player.getName()));
             }
         }
     }

@@ -9,13 +9,13 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 import javax.inject.Inject;
 
-public class FreezeBreakBlockEvent implements Listener {
+public class FreezeBreakBlockListener implements Listener {
 
     @Inject
     private FreezeManager freezeManager;
 
     @EventHandler
-    public void onBreakBlock(BlockBreakEvent event) {
+    public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (freezeManager.isFrozenState(player)) return;
 

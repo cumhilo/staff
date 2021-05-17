@@ -4,21 +4,19 @@ import com.gmail.vcamilx.staff.staff.StaffManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import javax.inject.Inject;
 
-public class StaffDropItemEvent implements Listener {
+public class StaffPickupItemListener implements Listener {
 
     @Inject
     private StaffManager staffManager;
 
     @EventHandler
-    public void dropItem(PlayerDropItemEvent event) {
+    public void onStaffPickupItem(PlayerPickupItemEvent event) {
         Player player = event.getPlayer();
 
-        if (!staffManager.isStaffMode(player)) return;
-
-        event.setCancelled(true);
+        if (staffManager.isStaffMode(player)) event.setCancelled(true);
     }
 }

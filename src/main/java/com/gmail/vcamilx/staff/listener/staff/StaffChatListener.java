@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 @InjectAll
-public class StaffChatEvent implements Listener {
+public class StaffChatListener implements Listener {
 
     private Staff staff;
     private StaffManager staffManager;

@@ -1,23 +1,23 @@
 package com.gmail.vcamilx.staff.service.implementation;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.listener.staff.StaffBreakBlockEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffChatEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffDropItemEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffInteractEntityEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffInteractEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffBlockBreakListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffChatListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffDropItemListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractAtEntityListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffInventoryClickListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
-import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffPlaceBlockEvent;
-import com.gmail.vcamilx.staff.listener.user.FreezeBreakBlockEvent;
-import com.gmail.vcamilx.staff.listener.user.FreezeDamageByEntityEvent;
-import com.gmail.vcamilx.staff.listener.user.FreezeDamageEvent;
-import com.gmail.vcamilx.staff.listener.user.FreezeDropItemEvent;
-import com.gmail.vcamilx.staff.listener.user.FreezeInteractInventoryEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffPickupItemListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffBlockPlaceListener;
+import com.gmail.vcamilx.staff.listener.user.FreezeBreakBlockListener;
+import com.gmail.vcamilx.staff.listener.user.FreezeDamageByEntityListener;
+import com.gmail.vcamilx.staff.listener.user.FreezeDamageListener;
+import com.gmail.vcamilx.staff.listener.user.FreezeDropItemListener;
+import com.gmail.vcamilx.staff.listener.user.FreezeInventoryClickListener;
 import com.gmail.vcamilx.staff.listener.user.FreezeMoveListener;
-import com.gmail.vcamilx.staff.listener.user.FreezePickUpItemEvent;
-import com.gmail.vcamilx.staff.listener.user.FreezeProjectileEvent;
+import com.gmail.vcamilx.staff.listener.user.FreezePickupItemListener;
+import com.gmail.vcamilx.staff.listener.user.FreezeProjectileLaunchEvent;
 import com.gmail.vcamilx.staff.service.IService;
 import me.yushust.inject.InjectAll;
 import org.bukkit.Bukkit;
@@ -29,24 +29,24 @@ public class ListenerServiceImpl implements IService {
 
     private Staff staff;
 
-    private StaffBreakBlockEvent staffBreakBlockEvent;
-    private StaffChatEvent staffChatEvent;
-    private StaffDropItemEvent staffDropItemEvent;
-    private StaffInteractInventoryEvent staffInteractInventoryEvent;
-    private StaffInteractEvent staffInteractEvent;
-    private StaffInteractEntityEvent staffInteractEntityEvent;
+    private StaffBlockBreakListener staffBlockBreakListener;
+    private StaffChatListener staffChatListener;
+    private StaffDropItemListener staffDropItemListener;
+    private StaffInventoryClickListener staffInventoryClickListener;
+    private StaffInteractListener staffInteractEvent;
+    private StaffInteractAtEntityListener staffInteractAtEntityListener;
     private StaffJoinListener staffJoinListener;
-    private StaffPickUpItemEvent staffPickUpItemEvent;
-    private StaffPlaceBlockEvent staffPlaceBlockEvent;
+    private StaffPickupItemListener staffPickUpItemListener;
+    private StaffBlockPlaceListener staffBlockPlaceListener;
 
-    private FreezeBreakBlockEvent freezeBreakBlockEvent;
-    private FreezeDamageByEntityEvent freezeDamageByEntityEvent;
-    private FreezeDamageEvent freezeDamageEvent;
-    private FreezeDropItemEvent freezeDropItemEvent;
-    private FreezeInteractInventoryEvent freezeInteractInventoryEvent;
+    private FreezeBreakBlockListener freezeBreakBlockListener;
+    private FreezeDamageByEntityListener freezeDamageByEntityListener;
+    private FreezeDamageListener freezeDamageListener;
+    private FreezeDropItemListener freezeDropItemListener;
+    private FreezeInventoryClickListener freezeInventoryClickListener;
     private FreezeMoveListener freezeMoveListener;
-    private FreezePickUpItemEvent freezePickUpItemEvent;
-    private FreezeProjectileEvent freezeProjectileEvent;
+    private FreezePickupItemListener freezePickUpItemListener;
+    private FreezeProjectileLaunchEvent freezeProjectileLaunchEvent;
 
     private void registerListener(Listener... listeners) {
         for (Listener listener : listeners) {
@@ -57,23 +57,23 @@ public class ListenerServiceImpl implements IService {
     @Override
     public void start() {
         registerListener(
-                staffBreakBlockEvent,
-                staffChatEvent,
-                staffDropItemEvent,
-                staffInteractInventoryEvent,
-                staffInteractEvent,
-                staffInteractEntityEvent,
-                staffJoinListener,
-                staffPickUpItemEvent,
-                staffPlaceBlockEvent,
-                freezeBreakBlockEvent,
-                freezeDamageByEntityEvent,
-                freezeDamageEvent,
-                freezeDropItemEvent,
-                freezeInteractInventoryEvent,
-                freezeMoveListener,
-                freezePickUpItemEvent,
-                freezeDamageEvent
+            staffBlockBreakListener,
+            staffChatListener,
+            staffDropItemListener,
+            staffInventoryClickListener,
+            staffInteractEvent,
+            staffInteractAtEntityListener,
+            staffJoinListener,
+            staffPickUpItemListener,
+            staffBlockPlaceListener,
+            freezeBreakBlockListener,
+            freezeDamageByEntityListener,
+            freezeDamageListener,
+            freezeDropItemListener,
+            freezeInventoryClickListener,
+            freezeMoveListener,
+            freezePickUpItemListener,
+            freezeDamageListener
         );
     }
 }

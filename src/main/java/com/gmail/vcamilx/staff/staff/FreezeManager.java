@@ -18,29 +18,29 @@ public class FreezeManager {
 
             staff.getConfig().getStringList("messages.freeze.target.freeze")
                     .forEach(s -> player.sendMessage(ChatUtil.color(s)
-                            .replaceAll("%frozen%", player.getName())));
+                            .replace("%frozen%", player.getName())));
 
             staff.getConfig().getStringList("messages.freeze.staff.freeze")
                     .forEach(s -> freezer.sendMessage(ChatUtil.color(s)
-                            .replaceAll("%frozen%", player.getName())
-                            .replaceAll("%staff%", freezer.getName())));
+                            .replace("%frozen%", player.getName())
+                            .replace("%staff%", freezer.getName())));
 
             return;
         }
 
         staff.getConfig().getStringList("messages.freeze.target.unfreeze")
                 .forEach(s -> player.sendMessage(ChatUtil.color(s)
-                        .replaceAll("%frozen%", player.getName())));
+                        .replace("%frozen%", player.getName())));
 
 
         staff.getConfig().getStringList("messages.freeze.staff.unfreeze")
                 .forEach(s -> freezer.sendMessage(ChatUtil.color(s)
-                        .replaceAll("%frozen%", player.getName())));
+                        .replace("%frozen%", player.getName())));
 
         player.removeMetadata("freeze", staff);
     }
 
     public boolean isFrozenState(Player player) {
-        return !player.hasMetadata("freeze");
+        return player.hasMetadata("freeze");
     }
 }

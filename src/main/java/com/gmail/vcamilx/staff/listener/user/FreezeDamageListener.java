@@ -8,13 +8,13 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 import javax.inject.Inject;
 
-public class FreezeDamageEvent implements Listener {
+public class FreezeDamageListener implements Listener {
 
     @Inject
     private FreezeManager freezeManager;
 
     @EventHandler
-    public void damage(EntityDamageEvent event) {
+    public void onEntityDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
 
         Player player = (Player) event.getEntity();

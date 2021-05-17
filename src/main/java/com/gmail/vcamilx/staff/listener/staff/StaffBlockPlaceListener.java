@@ -9,12 +9,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 @InjectAll
-public class StaffPlaceBlockEvent implements Listener {
+public class StaffBlockPlaceListener implements Listener {
 
     private StaffManager staffManager;
 
     @EventHandler
-    public void onPlaceBlock(BlockPlaceEvent event) {
+    public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
 
         if (staffManager.isStaffMode(player)) {

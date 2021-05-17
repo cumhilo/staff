@@ -4,18 +4,21 @@ import com.gmail.vcamilx.staff.staff.FreezeManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import javax.inject.Inject;
 
-public class FreezePickUpItemEvent implements Listener {
+public class FreezeDamageByEntityListener implements Listener {
 
     @Inject
     private FreezeManager freezeManager;
 
     @EventHandler
-    public void pickUpItem(PlayerPickupItemEvent event) {
-        Player player = event.getPlayer();
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        if (!(event.getEntity() instanceof Player)) return;
+        if (!(event.getDamager() instanceof Player)) return;
+
+        Player player = (Player) event.getDamager();
 
         if (!freezeManager.isFrozenState(player)) event.setCancelled(true);
     }

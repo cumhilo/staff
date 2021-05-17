@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @InjectAll
-public class StaffInteractEvent implements Listener {
+public class StaffInteractListener implements Listener {
 
     @InjectIgnore
     private final List<String> staffList = new ArrayList<>();
@@ -27,7 +27,7 @@ public class StaffInteractEvent implements Listener {
     private StaffManager staffManager;
 
     @EventHandler
-    public void interactEvent(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
@@ -48,7 +48,7 @@ public class StaffInteractEvent implements Listener {
 
                 for (String message : staff.getConfig().getStringList("messages.staff.list")) {
                     player.sendMessage(ChatUtil.color(message)
-                            .replaceAll("%staffs%", stringBuilder.toString()));
+                            .replace("%staffs%", stringBuilder.toString()));
                 }
             }
 
