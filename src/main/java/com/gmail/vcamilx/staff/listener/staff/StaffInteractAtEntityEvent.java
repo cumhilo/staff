@@ -13,13 +13,13 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @InjectAll
-public class StaffInteractEntityEvent implements Listener {
+public class StaffInteractAtEntityEvent implements Listener {
 
     private StaffManager staffManager;
     private FreezeManager freezeManager;
 
     @EventHandler
-    public void interaction(PlayerInteractAtEntityEvent event) {
+    public void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event) {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 

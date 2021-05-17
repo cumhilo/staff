@@ -14,7 +14,7 @@ public class StaffDropItemEvent implements Listener {
     private StaffManager staffManager;
 
     @EventHandler
-    public void dropItem(PlayerDropItemEvent event) {
+    public void onDropItem(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
 
         if (!staffManager.isStaffMode(player)) return;

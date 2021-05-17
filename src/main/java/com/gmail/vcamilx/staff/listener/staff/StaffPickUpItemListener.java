@@ -8,13 +8,13 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import javax.inject.Inject;
 
-public class StaffPickUpItemEvent implements Listener {
+public class StaffPickUpItemListener implements Listener {
 
     @Inject
     private StaffManager staffManager;
 
     @EventHandler
-    public void pickUpItem(PlayerPickupItemEvent event) {
+    public void onStaffPickUpItem(PlayerPickupItemEvent event) {
         Player player = event.getPlayer();
 
         if (staffManager.isStaffMode(player)) event.setCancelled(true);

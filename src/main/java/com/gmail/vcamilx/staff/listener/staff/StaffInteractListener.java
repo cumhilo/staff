@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @InjectAll
-public class StaffInteractEvent implements Listener {
+public class StaffInteractListener implements Listener {
 
     @InjectIgnore
     private final List<String> staffList = new ArrayList<>();
@@ -27,7 +27,7 @@ public class StaffInteractEvent implements Listener {
     private StaffManager staffManager;
 
     @EventHandler
-    public void interactEvent(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 

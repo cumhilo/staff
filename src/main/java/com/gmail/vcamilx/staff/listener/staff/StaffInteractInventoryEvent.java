@@ -13,7 +13,7 @@ public class StaffInteractInventoryEvent implements Listener {
     private StaffManager staffManager;
 
     @EventHandler
-    public void interactInventory(InventoryClickEvent event) {
+    public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
         if (!staffManager.isStaffMode(player)) return;

@@ -1,15 +1,15 @@
 package com.gmail.vcamilx.staff.service.implementation;
 
 import com.gmail.vcamilx.staff.Staff;
-import com.gmail.vcamilx.staff.listener.staff.StaffBreakBlockEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffBlockBreakListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffChatEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffDropItemEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffInteractEntityEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffInteractEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractAtEntityEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffInteractListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffInteractInventoryEvent;
 import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
-import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemEvent;
-import com.gmail.vcamilx.staff.listener.staff.StaffPlaceBlockEvent;
+import com.gmail.vcamilx.staff.listener.staff.StaffPickUpItemListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffBlockPlaceListener;
 import com.gmail.vcamilx.staff.listener.user.FreezeBreakBlockEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDamageByEntityEvent;
 import com.gmail.vcamilx.staff.listener.user.FreezeDamageEvent;
@@ -29,15 +29,15 @@ public class ListenerServiceImpl implements IService {
 
     private Staff staff;
 
-    private StaffBreakBlockEvent staffBreakBlockEvent;
+    private StaffBlockBreakListener staffBlockBreakListener;
     private StaffChatEvent staffChatEvent;
     private StaffDropItemEvent staffDropItemEvent;
     private StaffInteractInventoryEvent staffInteractInventoryEvent;
-    private StaffInteractEvent staffInteractEvent;
-    private StaffInteractEntityEvent staffInteractEntityEvent;
+    private StaffInteractListener staffInteractEvent;
+    private StaffInteractAtEntityEvent staffInteractAtEntityEvent;
     private StaffJoinListener staffJoinListener;
-    private StaffPickUpItemEvent staffPickUpItemEvent;
-    private StaffPlaceBlockEvent staffPlaceBlockEvent;
+    private StaffPickUpItemListener staffPickUpItemListener;
+    private StaffBlockPlaceListener staffBlockPlaceListener;
 
     private FreezeBreakBlockEvent freezeBreakBlockEvent;
     private FreezeDamageByEntityEvent freezeDamageByEntityEvent;
@@ -57,15 +57,15 @@ public class ListenerServiceImpl implements IService {
     @Override
     public void start() {
         registerListener(
-                staffBreakBlockEvent,
+            staffBlockBreakListener,
                 staffChatEvent,
                 staffDropItemEvent,
                 staffInteractInventoryEvent,
                 staffInteractEvent,
-                staffInteractEntityEvent,
+            staffInteractAtEntityEvent,
                 staffJoinListener,
-                staffPickUpItemEvent,
-                staffPlaceBlockEvent,
+            staffPickUpItemListener,
+            staffBlockPlaceListener,
                 freezeBreakBlockEvent,
                 freezeDamageByEntityEvent,
                 freezeDamageEvent,

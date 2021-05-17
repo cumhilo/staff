@@ -9,13 +9,13 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 import javax.inject.Inject;
 
-public class StaffBreakBlockEvent implements Listener {
+public class StaffBlockBreakListener implements Listener {
 
     @Inject
     private StaffManager staffManager;
 
     @EventHandler
-    public void onBreakBlock(BlockBreakEvent event) {
+    public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (staffManager.isStaffMode(player)) {
             player.sendMessage(ChatUtil.color("&cYou cannot break blocks when you are in staff mode!"));
