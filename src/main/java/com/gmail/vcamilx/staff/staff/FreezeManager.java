@@ -41,6 +41,6 @@ public class FreezeManager {
     }
 
     public boolean isFrozenState(Player player) {
-        return !player.hasMetadata("freeze");
+        return player.hasMetadata("freeze");
     }
 }
