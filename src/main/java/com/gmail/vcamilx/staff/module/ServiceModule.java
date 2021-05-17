@@ -10,8 +10,12 @@ public class ServiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(IService.class).named("staff-service").to(StaffService.class).singleton();
-        bind(IService.class).named("command-service").to(CommandServiceImpl.class).singleton();
-        bind(IService.class).named("listener-service").to(ListenerServiceImpl.class).singleton();
+        bindService("staff-service", StaffService.class);
+        bindService("command-service", CommandServiceImpl.class);
+        bindService("listener-service", ListenerServiceImpl.class);
+    }
+
+    private void bindService(String name, Class<? extends IService> target) {
+        bind(IService.class).named(name).to(target).singleton();
     }
 }
