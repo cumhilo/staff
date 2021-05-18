@@ -17,6 +17,6 @@ public class FreezeDropItemListener implements Listener {
     public void onPlayerDropItem(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
 
-        if (!freezeManager.isFrozenState(player)) event.setCancelled(true);
+        if (freezeManager.isFrozenState(player)) event.setCancelled(true);
     }
 }

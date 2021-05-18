@@ -17,6 +17,6 @@ public class FreezePickupItemListener implements Listener {
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
         Player player = event.getPlayer();
 
-        if (!freezeManager.isFrozenState(player)) event.setCancelled(true);
+        if (freezeManager.isFrozenState(player)) event.setCancelled(true);
     }
 }

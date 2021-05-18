@@ -17,7 +17,7 @@ public class FreezeBreakBlockListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        if (freezeManager.isFrozenState(player)) return;
+        if (!freezeManager.isFrozenState(player)) return;
 
         player.sendMessage(ChatUtil.color("&cYou cannot break blocks when you are frozen!"));
         event.setCancelled(true);

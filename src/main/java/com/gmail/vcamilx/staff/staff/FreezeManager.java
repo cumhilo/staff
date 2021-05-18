@@ -13,7 +13,7 @@ public class FreezeManager {
     private Staff staff;
 
     public void setFrozenState(Player player, Player freezer) {
-        if (isFrozenState(player)) {
+        if (!isFrozenState(player)) {
             player.setMetadata("freeze", new FixedMetadataValue(staff, true));
 
             staff.getConfig().getStringList("messages.freeze.target.freeze")
