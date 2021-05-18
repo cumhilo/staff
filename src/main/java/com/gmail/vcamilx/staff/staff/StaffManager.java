@@ -2,7 +2,7 @@ package com.gmail.vcamilx.staff.staff;
 
 import com.gmail.vcamilx.staff.Staff;
 import com.gmail.vcamilx.staff.staff.inventory.StaffInventory;
-import com.gmail.vcamilx.staff.util.cache.implemenatation.ManagerStorage;
+import com.gmail.vcamilx.staff.util.cache.implementation.ManagerStorage;
 import com.gmail.vcamilx.staff.util.chat.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -29,13 +29,13 @@ public class StaffManager {
             setVanish(player);
 
             player.sendTitle(
-                    ChatUtil.color(staff.getConfig().getString("messages.staff.join.title.title")),
-                    ChatUtil.color(staff.getConfig().getString("messages.staff.join.title.subtitle")),
-                    staff.getConfig().getInt("messages.staff.join.title.fadeIn"),
-                    staff.getConfig().getInt("messages.staff.join.title.stay"),
-                    staff.getConfig().getInt("messages.staff.join.title.fadeOut"));
+                ChatUtil.color(staff.getConfig().getString("messages.staff.join.title.title")),
+                ChatUtil.color(staff.getConfig().getString("messages.staff.join.title.subtitle")),
+                staff.getConfig().getInt("messages.staff.join.title.fadeIn"),
+                staff.getConfig().getInt("messages.staff.join.title.stay"),
+                staff.getConfig().getInt("messages.staff.join.title.fadeOut"));
             player.sendMessage(
-                    ChatUtil.color(staff.getConfig().getString("messages.staff.join.chat")));
+                ChatUtil.color(staff.getConfig().getString("messages.staff.join.chat")));
             return;
         }
 
@@ -48,13 +48,13 @@ public class StaffManager {
         setVanish(player);
 
         player.sendTitle(
-                ChatUtil.color(staff.getConfig().getString("messages.staff.leave.title.title")),
-                ChatUtil.color(staff.getConfig().getString("messages.staff.leave.title.subtitle")),
-                staff.getConfig().getInt("messages.staff.leave.title.fadeIn"),
-                staff.getConfig().getInt("messages.staff.leave.title.stay"),
-                staff.getConfig().getInt("messages.staff.leave.title.fadeOut"));
+            ChatUtil.color(staff.getConfig().getString("messages.staff.leave.title.title")),
+            ChatUtil.color(staff.getConfig().getString("messages.staff.leave.title.subtitle")),
+            staff.getConfig().getInt("messages.staff.leave.title.fadeIn"),
+            staff.getConfig().getInt("messages.staff.leave.title.stay"),
+            staff.getConfig().getInt("messages.staff.leave.title.fadeOut"));
         player.sendMessage(
-                ChatUtil.color(staff.getConfig().getString("messages.staff.leave.chat")));
+            ChatUtil.color(staff.getConfig().getString("messages.staff.leave.chat")));
     }
 
     private void setVanish(Player player) {
