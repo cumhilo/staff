@@ -27,7 +27,7 @@ public class StaffChatCommand implements CommandExecutor {
 
         if (!player.hasPermission("staff.chat")) {
             player.sendMessage(ChatUtil.color(
-                    staff.getConfig().getString("messages.other.noPermission")));
+                staff.getConfig().getString("messages.other.noPermission")));
             return true;
         }
 

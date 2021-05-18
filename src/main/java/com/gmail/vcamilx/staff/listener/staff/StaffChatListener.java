@@ -24,9 +24,9 @@ public class StaffChatListener implements Listener {
             for (Player players : Bukkit.getOnlinePlayers()) {
                 if (players.hasPermission("staff.chat")) {
                     players.sendMessage(ChatUtil.color(
-                            staff.getConfig().getString("messages.staff.chat"))
-                            .replace("%player%", player.getName())
-                            .replace("%message%", event.getMessage()));
+                        staff.getConfig().getString("messages.staff.chat"))
+                        .replace("%player%", player.getName())
+                        .replace("%message%", event.getMessage()));
                 }
             }
 

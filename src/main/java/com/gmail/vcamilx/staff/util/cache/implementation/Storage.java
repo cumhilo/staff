@@ -16,7 +16,8 @@ public class Storage<K, V> implements IStorage<K, V> {
 
     private final ConcurrentMap<K, V> cache = new ConcurrentHashMap<>();
 
-    @Override public Map<K, V> get() {
+    @Override
+    public Map<K, V> get() {
         return cache;
     }
 }

@@ -34,7 +34,7 @@ public class CheckStaffCommand implements CommandExecutor {
     private void checkStaffMode(Player player, Player target, String[] args) {
         if (!player.hasPermission("staff.check")) {
             player.sendMessage(ChatUtil.color(
-                    staff.getConfig().getString("messages.other.noPermission")));
+                staff.getConfig().getString("messages.other.noPermission")));
         }
 
         if (args.length != 1) {

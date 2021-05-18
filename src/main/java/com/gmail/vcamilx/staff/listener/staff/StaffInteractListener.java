@@ -48,7 +48,7 @@ public class StaffInteractListener implements Listener {
 
                 for (String message : staff.getConfig().getStringList("messages.staff.list")) {
                     player.sendMessage(ChatUtil.color(message)
-                            .replace("%staffs%", stringBuilder.toString()));
+                        .replace("%staffs%", stringBuilder.toString()));
                 }
             }
 

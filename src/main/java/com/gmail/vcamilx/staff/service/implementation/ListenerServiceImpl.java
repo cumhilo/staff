@@ -2,6 +2,7 @@ package com.gmail.vcamilx.staff.service.implementation;
 
 import com.gmail.vcamilx.staff.Staff;
 import com.gmail.vcamilx.staff.listener.staff.StaffBlockBreakListener;
+import com.gmail.vcamilx.staff.listener.staff.StaffBlockPlaceListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffChatListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffDropItemListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffInteractAtEntityListener;
@@ -9,7 +10,6 @@ import com.gmail.vcamilx.staff.listener.staff.StaffInteractListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffInventoryClickListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffJoinListener;
 import com.gmail.vcamilx.staff.listener.staff.StaffPickupItemListener;
-import com.gmail.vcamilx.staff.listener.staff.StaffBlockPlaceListener;
 import com.gmail.vcamilx.staff.listener.user.FreezeBreakBlockListener;
 import com.gmail.vcamilx.staff.listener.user.FreezeDamageByEntityListener;
 import com.gmail.vcamilx.staff.listener.user.FreezeDamageListener;

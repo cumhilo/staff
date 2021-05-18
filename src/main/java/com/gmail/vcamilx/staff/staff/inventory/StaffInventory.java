@@ -24,50 +24,50 @@ public class StaffInventory {
         // Compass item 🕊
 
         ItemStack compass = ItemBuilder
-                .newBuilder(Material.COMPASS)
-                .setName(ChatUtil.color("&9 » &b&lCompass &9 «"))
-                .setLore("", "Teleport anywhere, as if you were using magic!", "")
-                .build();
+            .newBuilder(Material.COMPASS)
+            .setName(ChatUtil.color("&9 » &b&lCompass &9 «"))
+            .setLore("", "Teleport anywhere, as if you were using magic!", "")
+            .build();
 
         player.getInventory().setItem(0, compass);
 
         // Freeze item 🥶
 
         ItemStack ice = ItemBuilder
-                .newBuilder(Material.ICE)
-                .setName(ChatUtil.color("&9 » &bFreeze machine &9 «"))
-                .setLore("", "Freeze anybody!", "")
-                .build();
+            .newBuilder(Material.ICE)
+            .setName(ChatUtil.color("&9 » &bFreeze machine &9 «"))
+            .setLore("", "Freeze anybody!", "")
+            .build();
 
         player.getInventory().setItem(1, ice);
 
         // Inventory see item 🔎
 
         ItemStack book = ItemBuilder
-                .newBuilder(Material.BOOK)
-                .setName(ChatUtil.color("&9 » &bInventory inspector &9 «"))
-                .setLore("", "See a player inventory!", "")
-                .build();
+            .newBuilder(Material.BOOK)
+            .setName(ChatUtil.color("&9 » &bInventory inspector &9 «"))
+            .setLore("", "See a player inventory!", "")
+            .build();
 
         player.getInventory().setItem(4, book);
 
         // Staff list item 📃
 
         ItemStack playerHead = ItemBuilder
-                .newBuilder(Material.PLAYER_HEAD)
-                .setName(ChatUtil.color("&9 » &bOnline staff &9 «"))
-                .setLore("", "Staff online list!", "")
-                .build();
+            .newBuilder(Material.PLAYER_HEAD)
+            .setName(ChatUtil.color("&9 » &bOnline staff &9 «"))
+            .setLore("", "Staff online list!", "")
+            .build();
 
         player.getInventory().setItem(7, playerHead);
 
         // Random teleport item 🪁
 
         ItemStack enderEye = ItemBuilder
-                .newBuilder(Material.ENDER_EYE)
-                .setName(ChatUtil.color("&9 » &bRandom teleport &9 «"))
-                .setLore("", "Teleport randomly!", "")
-                .build();
+            .newBuilder(Material.ENDER_EYE)
+            .setName(ChatUtil.color("&9 » &bRandom teleport &9 «"))
+            .setLore("", "Teleport randomly!", "")
+            .build();
 
         player.getInventory().setItem(8, enderEye);
     }

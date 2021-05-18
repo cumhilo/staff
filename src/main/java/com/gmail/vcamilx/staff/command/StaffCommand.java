@@ -20,7 +20,7 @@ public class StaffCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatUtil.color(
-                    staff.getConfig().getString("messages.other.noConsole")));
+                staff.getConfig().getString("messages.other.noConsole")));
             return true;
         }
 
@@ -28,7 +28,7 @@ public class StaffCommand implements CommandExecutor {
 
         if (!player.hasPermission("staff.mode")) {
             player.sendMessage(ChatUtil.color(
-                    staff.getConfig().getString("messages.other.noPermission")));
+                staff.getConfig().getString("messages.other.noPermission")));
             return true;
         }
 

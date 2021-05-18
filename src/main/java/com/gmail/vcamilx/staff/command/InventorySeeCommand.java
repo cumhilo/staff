@@ -19,7 +19,7 @@ public class InventorySeeCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatUtil.color(
-                    staff.getConfig().getString("messages.other.noConsole")));
+                staff.getConfig().getString("messages.other.noConsole")));
             return true;
         }
 
