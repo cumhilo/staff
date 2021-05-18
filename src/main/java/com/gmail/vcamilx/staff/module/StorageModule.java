@@ -1,8 +1,7 @@
 package com.gmail.vcamilx.staff.module;
 
 import com.gmail.vcamilx.staff.util.cache.IStorage;
-import com.gmail.vcamilx.staff.util.cache.implemenatation.ManagerStorage;
-import com.gmail.vcamilx.staff.util.cache.implemenatation.Storage;
+import com.gmail.vcamilx.staff.util.cache.implementation.Storage;
 import me.yushust.inject.AbstractModule;
 import me.yushust.inject.key.TypeReference;
 import org.bukkit.inventory.ItemStack;
