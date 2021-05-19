@@ -1,0 +1,4 @@
+com/github/vcamilx/staff/core/storage/IStorage.java
+ com.github.vcamilx.staff.core.storage.IStorage
+com/github/vcamilx/staff/core/service/IService.java
+ com.github.vcamilx.staff.core.service.IService

@@ -1,2 +1,4 @@
 rootProject.name = 'staff-recode'
+include 'plugin'
+include 'core'
 
