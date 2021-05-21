@@ -27,6 +27,6 @@ subprojects {
     targetCompatibility = '1.8'
 
     dependencies {
-        implementation('me.yushust.inject:core:0.4.2-SNAPSHOT')
+        implementation 'team.unnamed.gui:gui-core:2.2.0-SNAPSHOT'
     }
 }

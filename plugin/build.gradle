@@ -1,7 +1,10 @@
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    implementation 'me.yushust.inject:core:0.4.2-SNAPSHOT'
     implementation 'me.fixeddev:commandflow-bukkit:0.4.0'
-    implementation 'team.unnamed.gui:gui-core:2.2.0-SNAPSHOT'
+    implementation 'org.mongodb:mongo-java-driver:3.12.8'
 
     implementation project(':core')
+    implementation project(':version:v1_8_R3')
+    implementation project(':version:v1_16_R3')
 }
