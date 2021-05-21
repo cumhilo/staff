@@ -1,0 +1,67 @@
+# Here should go your Mongo URI
+# If you don't know how to get it, enter my discord and ask for help!
+# Discord: https://discord.gg/N4CWDdpeF6
+
+database:
+  mongodb:
+    uri: "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+messages:
+  freeze:
+    staff:
+      freeze:
+        - ""
+        - "&8&m                                         "
+        - "&bHey you! &5&l%staff%&b."
+        - "&bYou have frozen &5&l%frozen%"
+        - "&8&m                                         "
+        - ""
+      unfreeze:
+        - ""
+        - "&5[&d&l↯&5] &a&oYou have unfrozen &5&l%frozen%"
+        - ""
+    target:
+      freeze:
+        - ""
+        - "&8&m                                         "
+        - "&bHey you! &5&l%frozen% &bYou are currently &5&lFrozen&b."
+        - "&bFollow the staff's instructions or you will be sanctioned."
+        - ""
+        - "&7&oYou have 5 minutes to enter our teamspeak:"
+        - "&7&oYour.teamspeak.domain"
+        - "&8&m                                         "
+        - ""
+      unfreeze:
+        - ""
+        - "&5[&d&l↯&5] &a&oYou are no longer frozen!"
+        - ""
+  staff:
+    chat: "&7(&9StaffChat&7) -> &b %player% &7-> &a%message%"
+    join:
+      title:
+        title: "&aNow you're in staff-mode!"
+        subtitle: "&eGood job! ;)"
+        # 20 Ticks = 1 Second
+        fadeIn: 15
+        stay: 25
+        fadeOut: 15
+      chat: "&7(&9Staff&7) -> &aNow you're in staff-mode!"
+    leave:
+      title:
+        title: "&cYou aren't in staff mode now!"
+        subtitle: "&eGood job! ;)"
+        # 20 Ticks = 1 Second
+        fadeIn: 15
+        stay: 25
+        fadeOut: 15
+      chat: "&7(&9Staff&7) -> &cYou aren't in staff mode now!"
+    list:
+      - ""
+      - "&7&m                                  "
+      - "&b» &9&lOnline staffs:"
+      - " &b» &a%staffs%"
+      - "&7&m                                  "
+      - ""
+  other:
+    noConsole: "&cNo console command."
+    noPermission: "&cYou do not have permissions to do this, please contact an administrator if you think it is an error."
