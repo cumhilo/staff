@@ -1,6 +1,8 @@
 package com.github.vcamilx.staff.service.implementation;
 
 import com.github.vcamilx.staff.command.FreezeCommand;
+import com.github.vcamilx.staff.command.InventorySeeCommand;
+import com.github.vcamilx.staff.command.staff.StaffCommand;
 import com.github.vcamilx.staff.core.service.IService;
 import me.fixeddev.commandflow.CommandManager;
 import me.fixeddev.commandflow.annotated.AnnotatedCommandTreeBuilder;
@@ -10,21 +12,31 @@ import me.fixeddev.commandflow.annotated.part.defaults.DefaultsModule;
 import me.fixeddev.commandflow.bukkit.BukkitCommandManager;
 import me.fixeddev.commandflow.bukkit.factory.BukkitModule;
 import me.yushust.inject.InjectAll;
+import org.bukkit.Bukkit;
 
 @InjectAll
 public class CommandServiceImpl implements IService {
 
     private FreezeCommand freezeCommand;
+    private InventorySeeCommand inventorySeeCommand;
+    private StaffCommand staffCommand;
 
     public void start() {
         registerCommands(
-                freezeCommand
+                freezeCommand,
+                inventorySeeCommand,
+                staffCommand
         );
+        Bukkit
+                .getLogger()
+                .info("All commands has been loaded");
     }
 
     @Override
     public void stop() {
-
+        Bukkit
+                .getLogger()
+                .info("All commands has been disabled");
     }
 
     private void registerCommands(CommandClass... commandClasses) {
