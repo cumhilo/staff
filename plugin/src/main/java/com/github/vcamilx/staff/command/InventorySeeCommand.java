@@ -1,25 +1,19 @@
 package com.github.vcamilx.staff.command;
 
-import com.github.vcamilx.staff.manager.mode.FreezeManager;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
 import me.fixeddev.commandflow.annotated.annotation.Named;
 import me.fixeddev.commandflow.bukkit.annotation.Sender;
 import org.bukkit.entity.Player;
 
-import javax.inject.Inject;
+public class InventorySeeCommand implements CommandClass {
 
-public class FreezeCommand implements CommandClass {
-
-    @Inject
-    private FreezeManager freezeManager;
-
-    @Command(names = {"freeze", "ss"}, permission = "staff.*")
-    public boolean onFreezePlayer(
+    @Command(names = {"invsee", "inventorysee", "inspect"}, permission = "staff.*")
+    public boolean performCommand(
             @Sender Player player,
             @Named("target") Player target) {
 
-        freezeManager.setFrozen(player, target);
+        player.openInventory(target.getInventory());
 
         return true;
     }
