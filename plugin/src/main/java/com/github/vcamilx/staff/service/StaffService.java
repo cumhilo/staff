@@ -9,15 +9,24 @@ import javax.inject.Named;
 @InjectAll
 public class StaffService implements IService {
 
-    @Named("listener-service")
-    private IService listenerService;
-
     @Named("command-service")
     private IService commandService;
 
+    @Named("listener-service")
+    private IService listenerService;
+
+    @Named("version-service")
+    private IService versionService;
+
+    @Named("database-service")
+    private IService databaseService;
+
     public void start() {
-        listenerService.start();
+        versionService.start();
         commandService.start();
+        listenerService.start();
+        databaseService.start();
+
         Bukkit
                 .getLogger()
                 .info("All services has been started");
@@ -25,8 +34,11 @@ public class StaffService implements IService {
 
     @Override
     public void stop() {
-        listenerService.stop();
+        versionService.stop();
         commandService.stop();
+        listenerService.stop();
+        databaseService.start();
+
         Bukkit
                 .getLogger()
                 .info("All services has been stopped");
