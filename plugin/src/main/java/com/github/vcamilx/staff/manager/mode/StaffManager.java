@@ -1,10 +1,13 @@
 package com.github.vcamilx.staff.manager.mode;
 
 import com.github.vcamilx.staff.Staff;
+import com.github.vcamilx.staff.manager.database.MongoManager;
 import com.github.vcamilx.staff.manager.inventory.StaffInventory;
 import com.github.vcamilx.staff.util.chat.ChatUtil;
 import com.github.vcamilx.staff.util.storage.implementation.ManagerStorageImpl;
+import com.github.vcamilx.staff.util.verion.SimpleNMS;
 import me.yushust.inject.InjectAll;
+import me.yushust.inject.InjectIgnore;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -12,9 +15,12 @@ import org.bukkit.entity.Player;
 @InjectAll
 public class StaffManager {
 
+    @InjectIgnore
+    private static final ManagerStorageImpl managerStorage = new ManagerStorageImpl();
+
     private Staff staff;
-    private ManagerStorageImpl managerStorage;
     private StaffInventory staffInventory;
+    private MongoManager mongoManager;
 
     /**
      * Here, we will find a method which will allow us to add a metadata and the inventory to the player without the
@@ -32,7 +38,8 @@ public class StaffManager {
             player.setGameMode(GameMode.CREATIVE);
             setVanish(player);
 
-            player.sendTitle(
+            SimpleNMS.getNMSHandler().sendTitle(
+                    player,
                     ChatUtil
                             .color(staff
                                     .getConfig()
@@ -67,7 +74,8 @@ public class StaffManager {
         player.setGameMode(GameMode.SURVIVAL);
         setVanish(player);
 
-        player.sendTitle(
+        SimpleNMS.getNMSHandler().sendTitle(
+                player,
                 ChatUtil
                         .color(staff
                                 .getConfig()
@@ -119,7 +127,7 @@ public class StaffManager {
      * @return gets the concurrent HashMap of the ManagerStorage
      */
 
-    public ManagerStorageImpl getManagerStorage() {
+    public static ManagerStorageImpl getManagerStorage() {
         return managerStorage;
     }
 }
