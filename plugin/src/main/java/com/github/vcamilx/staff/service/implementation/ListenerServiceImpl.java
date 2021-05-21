@@ -18,7 +18,7 @@ import com.github.vcamilx.staff.listener.user.FreezeDropItemListener;
 import com.github.vcamilx.staff.listener.user.FreezeInventoryClickListener;
 import com.github.vcamilx.staff.listener.user.FreezeMoveListener;
 import com.github.vcamilx.staff.listener.user.FreezePickupItemListener;
-import com.github.vcamilx.staff.listener.user.FreezeProjectileLaunchEvent;
+import com.github.vcamilx.staff.listener.user.FreezeProjectileLaunchListener;
 import me.yushust.inject.InjectAll;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -46,7 +46,7 @@ public class ListenerServiceImpl implements IService {
     private FreezeInventoryClickListener freezeInventoryClickListener;
     private FreezeMoveListener freezeMoveListener;
     private FreezePickupItemListener freezePickUpItemListener;
-    private FreezeProjectileLaunchEvent freezeProjectileLaunchEvent;
+    private FreezeProjectileLaunchListener freezeProjectileLaunchListener;
 
     private void registerListener(Listener... listeners) {
         for (Listener listener : listeners) {
@@ -73,7 +73,8 @@ public class ListenerServiceImpl implements IService {
                 freezeInventoryClickListener,
                 freezeMoveListener,
                 freezePickUpItemListener,
-                freezeDamageListener
+                freezeDamageListener,
+                freezeProjectileLaunchListener
         );
         Bukkit
                 .getLogger()
