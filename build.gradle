@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+allprojects {
+    group 'com.github.vcamilx'
+    version '2.0-SNAPSHOT'
+}
+
+subprojects {
+    group 'com.github.vcamilx'
+    version '2.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    repositories {
+        mavenCentral()
+        maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+        maven { url = 'https://oss.sonatype.org/content/groups/public/' }
+        maven { url = 'https://repo.unnamed.team/repository/unnamed-snapshots/' }
+        maven { url = 'https://repo.unnamed.team/repository/unnamed-releases/' }
+    }
+
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    dependencies {
+        implementation 'team.unnamed.gui:gui-core:2.2.0-SNAPSHOT'
+    }
+}
