@@ -3,6 +3,7 @@ package com.github.vcamilx.staff.manager.database;
 import com.github.vcamilx.staff.Staff;
 import me.yushust.inject.InjectIgnore;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import javax.inject.Inject;
 
@@ -12,7 +13,7 @@ public class JedisProvider {
     private Staff staff;
 
     @InjectIgnore
-    private final Jedis jedis = new Jedis(
+    private final JedisPool jedisPool = new JedisPool(
             staff
                     .getConfig()
                     .getString("database.redis.host"),
@@ -21,7 +22,7 @@ public class JedisProvider {
                     .getInt("database.redis.port")
     );
 
-    public Jedis getJedis() {
-        return jedis;
+    public Jedis getJedisPool() {
+        return jedisPool.getResource();
     }
 }
