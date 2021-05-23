@@ -16,6 +16,8 @@ public class StaffPlayer {
     private int sanctions;
     private boolean staffMode;
     private boolean staffChat;
+    private boolean socialSpy;
+    private boolean vanished;
     private ItemStack[] inventory;
 
     public StaffPlayer(Player player) {
@@ -26,6 +28,8 @@ public class StaffPlayer {
         this.sanctions = 0;
         this.staffChat = true;
         this.staffMode = true;
+        this.socialSpy = true;
+        this.vanished = true;
         this.inventory = player.getInventory().getContents();
     }
 
@@ -37,16 +41,22 @@ public class StaffPlayer {
             "sanctions",
             "staffMode",
             "staffChat",
+            "socialSpy",
+            "vanished",
             "inventory"
     })
-    private StaffPlayer(String playerName,
-                        UUID playerId,
-                        Date firstActivity,
-                        Date lastActivity,
-                        int sanctions,
-                        boolean staffMode,
-                        boolean staffChat,
-                        ItemStack[] inventory) {
+    private StaffPlayer(
+            String playerName,
+            UUID playerId,
+            Date firstActivity,
+            Date lastActivity,
+            int sanctions,
+            boolean staffMode,
+            boolean staffChat,
+            boolean socialSpy,
+            boolean vanished,
+            ItemStack[] inventory
+    ) {
         this.playerName = playerName;
         this.playerId = playerId;
         this.firstActivity = firstActivity;
@@ -54,8 +64,11 @@ public class StaffPlayer {
         this.sanctions = sanctions;
         this.staffMode = staffMode;
         this.staffChat = staffChat;
+        this.socialSpy = socialSpy;
+        this.vanished = vanished;
         this.inventory = inventory;
     }
+
 
     public String getPlayerName() {
         return playerName;
@@ -111,6 +124,22 @@ public class StaffPlayer {
 
     public void setStaffChat(boolean staffChat) {
         this.staffChat = staffChat;
+    }
+
+    public boolean isSocialSpy() {
+        return socialSpy;
+    }
+
+    public void setSocialSpy(boolean socialSpy) {
+        this.socialSpy = socialSpy;
+    }
+
+    public boolean isVanished() {
+        return vanished;
+    }
+
+    public void setVanished(boolean vanished) {
+        this.vanished = vanished;
     }
 
     public ItemStack[] getInventory() {
