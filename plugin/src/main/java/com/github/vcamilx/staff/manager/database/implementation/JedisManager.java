@@ -101,7 +101,7 @@ public class JedisManager {
         return deserialized(key).getInventory();
     }
 
-    public void setPlayerName(Player player) {
+    public void setPlayerName(Player player, String playerName) {
         String key = player.getUniqueId().toString();
 
         try (Jedis resource = jedisProvider.getJedisPool()) {
@@ -109,13 +109,14 @@ public class JedisManager {
                 createPlayer(player);
 
             StaffPlayer deserialized = deserialized(key);
+            deserialized.setPlayerName(playerName);
 
             String serialized = gson.toJson(deserialized);
             resource.hset("staff", key, serialized);
         }
     }
 
-    public void setPlayerId(Player player) {
+    public void setPlayerId(Player player, UUID uuid) {
         String key = player.getUniqueId().toString();
 
         try (Jedis resource = jedisProvider.getJedisPool()) {
@@ -123,6 +124,7 @@ public class JedisManager {
                 createPlayer(player);
 
             StaffPlayer deserialized = deserialized(key);
+            deserialized.setPlayerId(uuid);
 
             String serialized = gson.toJson(deserialized);
             resource.hset("staff", key, serialized);
