@@ -1,6 +1,6 @@
-package com.github.vcamilx.staff.command.staff;
+package com.github.vcamilx.staff.command.sanctions;
 
-import com.github.vcamilx.staff.manager.mode.StaffChatManager;
+import com.github.vcamilx.staff.manager.sanctions.SanctionManager;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
 import me.fixeddev.commandflow.annotated.annotation.Named;
@@ -9,17 +9,18 @@ import org.bukkit.entity.Player;
 
 import javax.inject.Inject;
 
-public class StaffChatCommand implements CommandClass {
+@Command(names = {"sanction", "sanctions"}, permission = "staff.*")
+public class SanctionCommand implements CommandClass {
 
     @Inject
-    private StaffChatManager staffChatManager;
+    private SanctionManager sanctionManager;
 
-    @Command(names = {"chat", "c"}, desc = "Staff chat command")
-    public boolean performCommand(
+    @Command(names = "check")
+    public boolean performGetCommand(
             @Sender Player player,
             @Named("target") Player target) {
 
-        staffChatManager.setStaffChatMode(player);
+        sanctionManager.getSanctions(target);
 
         return true;
     }

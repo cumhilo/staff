@@ -20,13 +20,12 @@ public class StaffCheckCommand implements CommandClass {
             @Sender Player player,
             @Named("target") Player target) {
 
-        if (staffManager.isStaff(target)) {
+        if (staffManager.isStaffMode(target)) {
             player.sendMessage(ChatUtil.color("&a" + target.getName() + " it's in staff mode."));
             return true;
         }
 
         player.sendMessage(ChatUtil.color("&c" + target.getName() + " it's not in staff mode."));
-
         return true;
     }
 }

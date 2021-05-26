@@ -5,7 +5,6 @@ import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
 import me.fixeddev.commandflow.annotated.annotation.Named;
 import me.fixeddev.commandflow.annotated.annotation.SubCommandClasses;
-import me.fixeddev.commandflow.bukkit.annotation.PlayerOrSource;
 import me.fixeddev.commandflow.bukkit.annotation.Sender;
 import org.bukkit.entity.Player;
 
@@ -24,12 +23,7 @@ public class StaffCommand implements CommandClass {
     @Command(names = "")
     public boolean onPerformCommand(
             @Sender Player player,
-            @PlayerOrSource @Named("target") Player target) {
-
-        if (target != null) {
-            staffManager.setStaff(target);
-            return true;
-        }
+            @Named("target") Player target) {
 
         staffManager.setStaff(player);
 
