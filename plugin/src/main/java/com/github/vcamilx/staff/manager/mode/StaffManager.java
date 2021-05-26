@@ -1,42 +1,40 @@
 package com.github.vcamilx.staff.manager.mode;
 
 import com.github.vcamilx.staff.Staff;
-import com.github.vcamilx.staff.manager.database.MongoManager;
-import com.github.vcamilx.staff.manager.inventory.StaffInventory;
+import com.github.vcamilx.staff.core.player.StaffPlayer;
+import com.github.vcamilx.staff.manager.client.ClientManager;
+import com.github.vcamilx.staff.manager.database.JedisProvider;
+import com.github.vcamilx.staff.manager.database.implementation.JedisManager;
+import com.github.vcamilx.staff.manager.inventory.InventoryManager;
 import com.github.vcamilx.staff.util.chat.ChatUtil;
-import com.github.vcamilx.staff.util.storage.implementation.ManagerStorageImpl;
 import com.github.vcamilx.staff.util.verion.SimpleNMS;
+import com.google.gson.Gson;
 import me.yushust.inject.InjectAll;
-import me.yushust.inject.InjectIgnore;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+import redis.clients.jedis.Jedis;
 
 @InjectAll
 public class StaffManager {
 
-    @InjectIgnore
-    private static final ManagerStorageImpl managerStorage = new ManagerStorageImpl();
-
     private Staff staff;
-    private StaffInventory staffInventory;
-    private MongoManager mongoManager;
-
-    /**
-     * Here, we will find a method which will allow us to add a metadata and the inventory to the player without the
-     * need to repeat code unnecessarily, besides allowing us to have everything more organized.
-     *
-     * @param player the player to which the metadata and the inventory is to be applied
-     */
+    private ClientManager clientManager;
+    private InventoryManager inventoryManager;
+    private JedisManager jedisManager;
+    private JedisProvider jedisProvider;
+    private Gson gson;
+    private VanishManager vanishManager;
 
     public void setStaff(Player player) {
-        if (!isStaff(player)) {
-            managerStorage.add(player.getUniqueId(), player.getInventory().getContents());
+        if (isStaffMode(player)) {
+            setStaffMode(player, true);
+
+            inventoryManager.setInventory(player, player.getInventory().getContents());
             player.getInventory().clear();
-            staffInventory.inventory(player);
+            inventoryManager.inventory(player);
 
             player.setGameMode(GameMode.CREATIVE);
-            setVanish(player);
+            vanishManager.setVanish(player);
 
             SimpleNMS.getNMSHandler().sendTitle(
                     player,
@@ -66,13 +64,9 @@ public class StaffManager {
             return;
         }
 
-        managerStorage.find(player.getUniqueId()).ifPresent(itemStacks -> {
-            player.getInventory().setContents(managerStorage.getValue(player.getUniqueId()));
-            managerStorage.remove(player.getUniqueId());
-        });
-
+        player.getInventory().setContents(inventoryManager.getInventory(player));
         player.setGameMode(GameMode.SURVIVAL);
-        setVanish(player);
+        vanishManager.setVanish(player);
 
         SimpleNMS.getNMSHandler().sendTitle(
                 player,
@@ -98,20 +92,24 @@ public class StaffManager {
     }
 
     /**
-     * Here you can hide a player from other online players on the server.
+     * Here, we will find a method which will allow us to add a metadata and the inventory to the player without the
+     * need to repeat code unnecessarily, besides allowing us to have everything more organized.
      *
-     * @param player The player who will be hidden from the other players.
+     * @param player the player to which the metadata and the inventory is to be applied
      */
 
-    private void setVanish(Player player) {
-        Bukkit.getOnlinePlayers().forEach(player1 -> {
-            if (!player1.hasPermission("staff.mode") && !player1.canSee(player)) {
-                player1.showPlayer(staff, player);
-                return;
-            }
+    public void setStaffMode(Player player, boolean mode) {
+        String key = player.getUniqueId().toString();
 
-            player1.hidePlayer(staff, player);
-        });
+        try (Jedis resource = jedisProvider.getJedisPool().getResource()) {
+            clientManager.createPlayer(player);
+
+            StaffPlayer deserialized = jedisManager.deserialized(key);
+            deserialized.setStaffMode(mode);
+
+            String serialized = gson.toJson(deserialized);
+            resource.hset("staff", key, serialized);
+        }
     }
 
     /**
@@ -119,15 +117,9 @@ public class StaffManager {
      * @return true or false, depending on whether the player exists in the map.
      */
 
-    public boolean isStaff(Player player) {
-        return getManagerStorage().exists(player.getUniqueId());
-    }
+    public boolean isStaffMode(Player player) {
+        String key = player.getUniqueId().toString();
 
-    /**
-     * @return gets the concurrent HashMap of the ManagerStorage
-     */
-
-    public static ManagerStorageImpl getManagerStorage() {
-        return managerStorage;
+        return jedisManager.deserialized(key).isStaffMode();
     }
 }
