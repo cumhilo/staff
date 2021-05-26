@@ -23,13 +23,13 @@ public class StaffInteractAtEntityListener implements Listener {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-        if (!staffManager.isStaff(player)) return;
+        if (!staffManager.isStaffMode(player)) return;
         if (!(event.getRightClicked() instanceof Player)) return;
         if (event.getHand() != EquipmentSlot.HAND) return;
 
         Player target = (Player) event.getRightClicked();
 
-        if (itemInHand.getType() == Material.ICE && !staffManager.isStaff(target)) {
+        if (itemInHand.getType() == Material.ICE && !staffManager.isStaffMode(target)) {
             freezeManager.setFrozen(target, player);
         }
 

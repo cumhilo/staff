@@ -17,7 +17,7 @@ public class StaffBlockPlaceListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
 
-        if (staffManager.isStaff(player)) {
+        if (staffManager.isStaffMode(player)) {
             player.sendMessage(ChatUtil.color("&cYou cannot place bocks when you are in staff mode!"));
             event.setCancelled(true);
         }

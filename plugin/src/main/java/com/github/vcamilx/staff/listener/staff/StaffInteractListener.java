@@ -31,7 +31,7 @@ public class StaffInteractListener implements Listener {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-        if (!staffManager.isStaff(player)) return;
+        if (!staffManager.isStaffMode(player)) return;
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR)
 
             if (itemInHand.getType() == Material.PLAYER_HEAD) {

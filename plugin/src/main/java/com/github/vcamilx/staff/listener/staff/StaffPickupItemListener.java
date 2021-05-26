@@ -17,6 +17,6 @@ public class StaffPickupItemListener implements Listener {
     public void onStaffPickupItem(PlayerPickupItemEvent event) {
         Player player = event.getPlayer();
 
-        if (staffManager.isStaff(player)) event.setCancelled(true);
+        if (staffManager.isStaffMode(player)) event.setCancelled(true);
     }
 }

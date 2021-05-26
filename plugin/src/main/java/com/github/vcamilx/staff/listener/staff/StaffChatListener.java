@@ -1,7 +1,7 @@
 package com.github.vcamilx.staff.listener.staff;
 
 import com.github.vcamilx.staff.Staff;
-import com.github.vcamilx.staff.manager.mode.StaffManager;
+import com.github.vcamilx.staff.manager.mode.StaffChatManager;
 import com.github.vcamilx.staff.util.chat.ChatUtil;
 import me.yushust.inject.InjectAll;
 import org.bukkit.Bukkit;
@@ -15,12 +15,12 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 public class StaffChatListener implements Listener {
 
     private Staff staff;
-    private StaffManager staffManager;
+    private StaffChatManager staffChatManager;
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMessage(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if (staffManager.isStaff(player)) {
+        if (staffChatManager.isStaffChat(player)) {
             for (Player players : Bukkit.getOnlinePlayers()) {
                 if (players.hasPermission("staff.chat")) {
                     players.sendMessage(ChatUtil.color(
