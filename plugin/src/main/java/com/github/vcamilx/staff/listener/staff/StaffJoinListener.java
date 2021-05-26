@@ -1,6 +1,5 @@
 package com.github.vcamilx.staff.listener.staff;
 
-import com.github.vcamilx.staff.core.player.StaffPlayer;
 import com.github.vcamilx.staff.manager.client.ClientManager;
 import com.github.vcamilx.staff.manager.mode.StaffManager;
 import com.google.gson.Gson;

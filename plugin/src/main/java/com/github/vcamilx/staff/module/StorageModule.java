@@ -1,12 +1,10 @@
 package com.github.vcamilx.staff.module;
 
 import com.github.vcamilx.staff.core.storage.IStorage;
-import com.github.vcamilx.staff.manager.database.JedisProvider;
 import com.github.vcamilx.staff.util.storage.Storage;
 import me.yushust.inject.AbstractModule;
 import me.yushust.inject.key.TypeReference;
 import org.bukkit.inventory.ItemStack;
-import redis.clients.jedis.Jedis;
 
 import java.util.UUID;
 
