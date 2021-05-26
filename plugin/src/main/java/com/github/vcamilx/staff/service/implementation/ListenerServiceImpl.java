@@ -5,6 +5,7 @@ import com.github.vcamilx.staff.core.service.IService;
 import com.github.vcamilx.staff.listener.staff.StaffBlockBreakListener;
 import com.github.vcamilx.staff.listener.staff.StaffBlockPlaceListener;
 import com.github.vcamilx.staff.listener.staff.StaffChatListener;
+import com.github.vcamilx.staff.listener.staff.StaffChatSpyListener;
 import com.github.vcamilx.staff.listener.staff.StaffDropItemListener;
 import com.github.vcamilx.staff.listener.staff.StaffInteractAtEntityListener;
 import com.github.vcamilx.staff.listener.staff.StaffInteractListener;
@@ -31,6 +32,7 @@ public class ListenerServiceImpl implements IService {
 
     private StaffBlockBreakListener staffBlockBreakListener;
     private StaffChatListener staffChatListener;
+    private StaffChatSpyListener staffChatSpyListener;
     private StaffDropItemListener staffDropItemListener;
     private StaffInventoryClickListener staffInventoryClickListener;
     private StaffInteractListener staffInteractEvent;
@@ -59,6 +61,7 @@ public class ListenerServiceImpl implements IService {
         registerListener(
                 staffBlockBreakListener,
                 staffChatListener,
+                staffChatSpyListener,
                 staffDropItemListener,
                 staffInventoryClickListener,
                 staffInteractEvent,
