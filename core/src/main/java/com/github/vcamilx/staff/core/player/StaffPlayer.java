@@ -26,8 +26,8 @@ public class StaffPlayer {
         this.firstActivity = new Date();
         this.lastActivity = new Date();
         this.sanctions = 0;
-        this.staffChat = true;
         this.staffMode = true;
+        this.staffChat = true;
         this.socialSpy = true;
         this.vanished = true;
         this.inventory = player.getInventory().getContents();
@@ -45,7 +45,7 @@ public class StaffPlayer {
             "vanished",
             "inventory"
     })
-    private StaffPlayer(
+    public StaffPlayer(
             String playerName,
             UUID playerId,
             Date firstActivity,
@@ -55,8 +55,7 @@ public class StaffPlayer {
             boolean staffChat,
             boolean socialSpy,
             boolean vanished,
-            ItemStack[] inventory
-    ) {
+            ItemStack[] inventory) {
         this.playerName = playerName;
         this.playerId = playerId;
         this.firstActivity = firstActivity;
@@ -68,7 +67,6 @@ public class StaffPlayer {
         this.vanished = vanished;
         this.inventory = inventory;
     }
-
 
     public String getPlayerName() {
         return playerName;
