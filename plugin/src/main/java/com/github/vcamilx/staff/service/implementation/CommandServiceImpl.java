@@ -2,6 +2,10 @@ package com.github.vcamilx.staff.service.implementation;
 
 import com.github.vcamilx.staff.command.FreezeCommand;
 import com.github.vcamilx.staff.command.InventorySeeCommand;
+import com.github.vcamilx.staff.command.chat.SocialSpyCommand;
+import com.github.vcamilx.staff.command.sanctions.SanctionCommand;
+import com.github.vcamilx.staff.command.staff.StaffChatCommand;
+import com.github.vcamilx.staff.command.staff.StaffCheckCommand;
 import com.github.vcamilx.staff.command.staff.StaffCommand;
 import com.github.vcamilx.staff.core.service.IService;
 import me.fixeddev.commandflow.CommandManager;
@@ -19,12 +23,20 @@ public class CommandServiceImpl implements IService {
 
     private FreezeCommand freezeCommand;
     private InventorySeeCommand inventorySeeCommand;
+    private SocialSpyCommand socialSpyCommand;
+    private SanctionCommand sanctionCommand;
+    private StaffCheckCommand staffCheckCommand;
+    private StaffChatCommand staffChatCommand;
     private StaffCommand staffCommand;
 
     public void start() {
         registerCommands(
                 freezeCommand,
                 inventorySeeCommand,
+                sanctionCommand,
+                socialSpyCommand,
+                staffChatCommand,
+                staffCheckCommand,
                 staffCommand
         );
         Bukkit
