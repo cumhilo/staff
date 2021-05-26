@@ -3,8 +3,9 @@
 # Discord: https://discord.gg/N4CWDdpeF6
 
 database:
-  mongodb:
-    uri: "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  redis:
+    host: "127.0.0.1"
+    port: 6379
 
 messages:
   freeze:
@@ -37,6 +38,7 @@ messages:
         - ""
   staff:
     chat: "&7(&9StaffChat&7) -> &b %player% &7-> &a%message%"
+    spy: "&7Spy -> %player% -> %message%"
     join:
       title:
         title: "&aNow you're in staff-mode!"
