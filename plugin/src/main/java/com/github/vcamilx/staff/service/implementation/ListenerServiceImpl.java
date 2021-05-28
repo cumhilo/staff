@@ -25,7 +25,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 @InjectAll
-@SuppressWarnings("unused")
 public class ListenerServiceImpl implements IService {
 
     private Staff staff;
