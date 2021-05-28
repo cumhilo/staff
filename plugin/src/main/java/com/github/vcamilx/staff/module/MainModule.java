@@ -14,10 +14,7 @@ public class MainModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        install(
-                new ServiceModule(),
-                new StorageModule()
-        );
+        install(new ServiceModule());
 
         bind(Staff.class).toInstance(staff);
         bind(Plugin.class).to(Staff.class);
