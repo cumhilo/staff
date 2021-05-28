@@ -3,7 +3,7 @@ dependencies {
     implementation 'me.yushust.inject:core:0.4.2-SNAPSHOT'
     implementation 'me.fixeddev:commandflow-bukkit:0.4.0'
     implementation 'redis.clients:jedis:3.6.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.7'
 
     implementation project(':core')
     implementation project(':version:v1_8_R3')
