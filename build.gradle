@@ -27,6 +27,6 @@ subprojects {
     targetCompatibility = '1.8'
 
     dependencies {
-        implementation 'team.unnamed.gui:gui-core:2.2.0-SNAPSHOT'
+        implementation 'team.unnamed.gui:core:2.2.1-SNAPSHOT'
     }
 }
