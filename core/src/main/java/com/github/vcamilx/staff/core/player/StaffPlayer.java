@@ -18,7 +18,6 @@ public class StaffPlayer {
     private boolean staffChat;
     private boolean socialSpy;
     private boolean vanished;
-    private ItemStack[] inventory;
 
     public StaffPlayer(Player player) {
         this.playerName = player.getName();
@@ -30,7 +29,6 @@ public class StaffPlayer {
         this.staffChat = true;
         this.socialSpy = true;
         this.vanished = true;
-        this.inventory = player.getInventory().getContents();
     }
 
     @ConstructorProperties({
@@ -65,7 +63,6 @@ public class StaffPlayer {
         this.staffChat = staffChat;
         this.socialSpy = socialSpy;
         this.vanished = vanished;
-        this.inventory = inventory;
     }
 
     public String getPlayerName() {
@@ -138,13 +135,5 @@ public class StaffPlayer {
 
     public void setVanished(boolean vanished) {
         this.vanished = vanished;
-    }
-
-    public ItemStack[] getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(ItemStack[] inventory) {
-        this.inventory = inventory;
     }
 }

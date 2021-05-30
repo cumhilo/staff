@@ -73,7 +73,7 @@ public class InventoryManager {
         player.getInventory().setItem(8, enderEye);
     }
 
-    public void setInventory(Player player, ItemStack[] inventory) {
+    /*public void setInventory(Player player, ItemStack[] inventory) {
         String key = player.getUniqueId().toString();
 
         try (Jedis resource = jedisProvider.getJedisPool().getResource()) {
@@ -92,5 +92,5 @@ public class InventoryManager {
         String key = player.getUniqueId().toString();
 
         return jedisManager.deserialized(key).getInventory();
-    }
+    }*/
 }
