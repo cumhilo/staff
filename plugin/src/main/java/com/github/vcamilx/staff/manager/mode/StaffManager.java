@@ -26,11 +26,14 @@ public class StaffManager {
     private VanishManager vanishManager;
 
     public void setStaff(Player player) {
-        if (isStaffMode(player)) {
+        clientManager.createPlayer(player);
+
+        if (!isStaffMode(player)) {
             setStaffMode(player, true);
 
-            inventoryManager.setInventory(player, player.getInventory().getContents());
+            // inventoryManager.setInventory(player, player.getInventory().getContents());
             player.getInventory().clear();
+
             inventoryManager.inventory(player);
 
             player.setGameMode(GameMode.CREATIVE);
@@ -38,57 +41,31 @@ public class StaffManager {
 
             SimpleNMS.getNMSHandler().sendTitle(
                     player,
-                    ChatUtil
-                            .color(staff
-                                    .getConfig()
-                                    .getString("messages.staff.join.title.title")),
-                    ChatUtil
-                            .color(staff
-                                    .getConfig()
-                                    .getString("messages.staff.join.title.subtitle")),
-                    staff
-                            .getConfig()
-                            .getInt("messages.staff.join.title.fadeIn"),
-                    staff
-                            .getConfig()
-                            .getInt("messages.staff.join.title.stay"),
-                    staff
-                            .getConfig()
-                            .getInt("messages.staff.join.title.fadeOut"));
+                    ChatUtil.color(staff.getConfig().getString("messages.staff.join.title.title")),
+                    ChatUtil.color(staff.getConfig().getString("messages.staff.join.title.subtitle")),
+                    staff.getConfig().getInt("messages.staff.join.title.fadeIn"),
+                    staff.getConfig().getInt("messages.staff.join.title.stay"),
+                    staff.getConfig().getInt("messages.staff.join.title.fadeOut"));
 
-            player
-                    .sendMessage(
-                            ChatUtil.color(staff
-                                    .getConfig()
-                                    .getString("messages.staff.join.chat")));
+            player.sendMessage(ChatUtil.color(staff.getConfig().getString("messages.staff.join.chat")));
             return;
         }
 
-        player.getInventory().setContents(inventoryManager.getInventory(player));
+        setStaffMode(player, false);
+
+        // player.getInventory().setContents(inventoryManager.getInventory(player));
         player.setGameMode(GameMode.SURVIVAL);
         vanishManager.setVanish(player);
 
         SimpleNMS.getNMSHandler().sendTitle(
                 player,
-                ChatUtil
-                        .color(staff
-                                .getConfig()
-                                .getString("messages.staff.leave.title.title")),
-                ChatUtil
-                        .color(staff
-                                .getConfig()
-                                .getString("messages.staff.leave.title.subtitle")),
-                staff
-                        .getConfig()
-                        .getInt("messages.staff.leave.title.fadeIn"),
-                staff
-                        .getConfig()
-                        .getInt("messages.staff.leave.title.stay"),
-                staff
-                        .getConfig()
-                        .getInt("messages.staff.leave.title.fadeOut"));
-        player.sendMessage(
-                ChatUtil.color(staff.getConfig().getString("messages.staff.leave.chat")));
+                ChatUtil.color(staff.getConfig().getString("messages.staff.leave.title.title")),
+                ChatUtil.color(staff.getConfig().getString("messages.staff.leave.title.subtitle")),
+                staff.getConfig().getInt("messages.staff.leave.title.fadeIn"),
+                staff.getConfig().getInt("messages.staff.leave.title.stay"),
+                staff.getConfig().getInt("messages.staff.leave.title.fadeOut"));
+
+        player.sendMessage(ChatUtil.color(staff.getConfig().getString("messages.staff.leave.chat")));
     }
 
     /**
