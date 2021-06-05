@@ -15,11 +15,18 @@ public class FreezeDamageByEntityListener implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (!(event.getEntity() instanceof Player)) return;
-        if (!(event.getDamager() instanceof Player)) return;
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+
+        if (!(event.getDamager() instanceof Player)) {
+            return;
+        }
 
         Player player = (Player) event.getDamager();
 
-        if (freezeManager.isFrozen(player)) event.setCancelled(true);
+        if (freezeManager.isFrozen(player)) {
+            event.setCancelled(true);
+        }
     }
 }

@@ -17,6 +17,8 @@ public class StaffDropItemListener implements Listener {
     public void onDropItem(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
 
-        if (staffManager.isStaffMode(player)) event.setCancelled(true);
+        if (staffManager.isStaffMode(player)) {
+            event.setCancelled(true);
+        }
     }
 }

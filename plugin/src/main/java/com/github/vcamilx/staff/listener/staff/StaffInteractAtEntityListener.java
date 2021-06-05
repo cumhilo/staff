@@ -23,9 +23,17 @@ public class StaffInteractAtEntityListener implements Listener {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-        if (!staffManager.isStaffMode(player)) return;
-        if (!(event.getRightClicked() instanceof Player)) return;
-        if (event.getHand() != EquipmentSlot.HAND) return;
+        if (!staffManager.isStaffMode(player)) {
+            return;
+        }
+
+        if (!(event.getRightClicked() instanceof Player)) {
+            return;
+        }
+
+        if (event.getHand() != EquipmentSlot.HAND) {
+            return;
+        }
 
         Player target = (Player) event.getRightClicked();
 

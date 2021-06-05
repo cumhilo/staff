@@ -20,11 +20,15 @@ public class FreezeProjectileLaunchListener implements Listener {
 
         Projectile projectile = event.getEntity();
 
-        if (!(projectile.getShooter() instanceof Player)) return;
+        if (!(projectile.getShooter() instanceof Player)) {
+            return;
+        }
 
         Player player = (Player) projectile.getShooter();
 
-        if (!freezeManager.isFrozen(player)) return;
+        if (!freezeManager.isFrozen(player)) {
+            return;
+        }
 
         player.sendMessage(ChatUtil.color("&cYou cannot launch projectiles when you are frozen!"));
         event.setCancelled(true);

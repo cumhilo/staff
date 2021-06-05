@@ -23,19 +23,16 @@ public class FreezeMoveListener implements Listener {
         Location eventFrom = event.getFrom();
         Location eventTo = event.getTo();
 
-        if (!freezeManager.isFrozen(player)) return;
+        if (!freezeManager.isFrozen(player)) {
+            return;
+        }
 
-        if (eventTo != null &&
-                (eventFrom.getBlockZ() != eventTo.getBlockZ() ||
-                        eventFrom.getBlockX() != eventTo.getBlockX())) {
+        if (eventTo != null && (eventFrom.getBlockZ() != eventTo.getBlockZ()
+                || eventFrom.getBlockX() != eventTo.getBlockX())) {
 
             player.teleport(eventFrom);
-
             staff.getConfig().getStringList("messages.freeze.target.freeze")
-                    .forEach(s -> player
-                            .sendMessage(ChatUtil
-                                    .color(s)
-                                    .replace("%frozen%", player.getName())));
+                    .forEach(s -> player.sendMessage(ChatUtil.color(s).replace("%frozen%", player.getName())));
         }
     }
 }

@@ -20,6 +20,8 @@ public class StaffInventoryClickListener implements Listener {
 
         Player player = (Player) event.getWhoClicked();
 
-        if (staffManager.isStaffMode(player)) event.setCancelled(true);
+        if (staffManager.isStaffMode(player)) {
+            event.setCancelled(true);
+        }
     }
 }

@@ -31,9 +31,11 @@ public class StaffInteractListener implements Listener {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-        if (!staffManager.isStaffMode(player)) return;
-        if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR)
+        if (!staffManager.isStaffMode(player)) {
+            return;
+        }
 
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) {
             if (itemInHand.getType() == Material.PLAYER_HEAD) {
                 Bukkit.getOnlinePlayers().forEach(player1 -> {
                     if (player1.hasPermission("staff") && !staffList.contains(player1.getName()))
@@ -47,11 +49,11 @@ public class StaffInteractListener implements Listener {
                 staffList.forEach(s -> stringBuilder.append(s).append(", "));
 
                 for (String message : staff.getConfig().getStringList("messages.staff.list")) {
-                    player.sendMessage(ChatUtil.color(message)
-                            .replace("%staffs%", stringBuilder.toString()));
+                    player.sendMessage(ChatUtil.color(message).replace("%staffs%", stringBuilder.toString()));
                 }
             }
 
-        event.setCancelled(true);
+            event.setCancelled(true);
+        }
     }
 }

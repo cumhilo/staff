@@ -16,6 +16,7 @@ public class StaffJoinListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+
         if (player.hasPermission("staff.mode")) {
             staffManager.setStaff(player);
         }

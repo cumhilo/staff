@@ -17,12 +17,10 @@ public class StaffChatSpyListener implements Listener {
 
     @EventHandler
     public void onMessage(AsyncPlayerChatEvent event) {
-
         Player player = event.getPlayer();
 
         if (socialSpyManager.isSocialSpy(player)) {
-            player.sendMessage(ChatUtil.color(
-                    staff.getConfig().getString("messages.staff.spy"))
+            player.sendMessage(ChatUtil.color(staff.getConfig().getString("messages.staff.spy"))
                     .replace("%player%", player.getName())
                     .replace("%message%", event.getMessage()));
         }
