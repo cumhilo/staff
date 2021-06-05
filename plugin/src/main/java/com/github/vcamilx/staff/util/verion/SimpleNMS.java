@@ -1,14 +1,7 @@
-package com.github.vcamilx.staff.util.verion;
-
-import com.github.vcamilx.staff.core.nms.NMSHandler;
-import com.github.vcamilx.staff.version.NMSHandler_1_16_R3;
-import com.github.vcamilx.staff.version.NMSHandler_1_8_R3;
-import org.bukkit.Bukkit;
-
-import java.util.regex.Pattern;
-
 /*
- * Credits: Special thanks to Javier (https://github.com/Espryth)
+ * SimpleNMS
+ *
+ *  Credits: Special thanks to Javier (https://github.com/Espryth)
  * from there I got the name of the packages / classes and guided me in most of the NMS,
  * besides this thanks to iAlexT (https://github.com/iAlexT)
  * who was the one who explained me about packets and other things...
@@ -18,6 +11,15 @@ import java.util.regex.Pattern;
  *
  * Sincerely yours: vCamilo
  */
+
+package com.github.vcamilx.staff.util.verion;
+
+import com.github.vcamilx.staff.core.nms.NMSHandler;
+import com.github.vcamilx.staff.version.NMSHandler_1_16_R3;
+import com.github.vcamilx.staff.version.NMSHandler_1_8_R3;
+import org.bukkit.Bukkit;
+
+import java.util.regex.Pattern;
 
 public class SimpleNMS {
 
