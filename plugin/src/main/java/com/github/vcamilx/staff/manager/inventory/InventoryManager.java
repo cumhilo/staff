@@ -9,6 +9,7 @@ import com.github.vcamilx.staff.util.verion.SimpleNMS;
 import com.google.gson.Gson;
 import me.yushust.inject.InjectAll;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import redis.clients.jedis.Jedis;
 
@@ -73,7 +74,7 @@ public class InventoryManager {
         player.getInventory().setItem(8, enderEye);
     }
 
-    /*public void setInventory(Player player, ItemStack[] inventory) {
+    public void setInventory(Player player, Inventory inventory) {
         String key = player.getUniqueId().toString();
 
         try (Jedis resource = jedisProvider.getJedisPool().getResource()) {
@@ -81,7 +82,7 @@ public class InventoryManager {
                 clientManager.createPlayer(player);
 
             StaffPlayer deserialized = jedisManager.deserialized(key);
-            deserialized.setInventory(inventory);
+            deserialized.setPlayerInventory(inventory);
 
             String serialized = gson.toJson(deserialized);
             resource.hset("staff", key, serialized);
@@ -91,6 +92,6 @@ public class InventoryManager {
     public ItemStack[] getInventory(Player player) {
         String key = player.getUniqueId().toString();
 
-        return jedisManager.deserialized(key).getInventory();
-    }*/
+        return jedisManager.deserialized(key).getPlayerInventory().getContents();
+    }
 }

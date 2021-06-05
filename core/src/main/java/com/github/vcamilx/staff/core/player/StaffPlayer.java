@@ -1,6 +1,7 @@
 package com.github.vcamilx.staff.core.player;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.beans.ConstructorProperties;
@@ -11,6 +12,7 @@ public class StaffPlayer {
 
     private String playerName;
     private UUID playerId;
+    private Inventory playerInventory;
     private Date firstActivity;
     private Date lastActivity;
     private int sanctions;
@@ -22,6 +24,7 @@ public class StaffPlayer {
     public StaffPlayer(Player player) {
         this.playerName = player.getName();
         this.playerId = player.getUniqueId();
+        this.playerInventory = player.getInventory();
         this.firstActivity = new Date();
         this.lastActivity = new Date();
         this.sanctions = 0;
@@ -46,6 +49,7 @@ public class StaffPlayer {
     public StaffPlayer(
             String playerName,
             UUID playerId,
+            Inventory playerInventory,
             Date firstActivity,
             Date lastActivity,
             int sanctions,
@@ -56,6 +60,7 @@ public class StaffPlayer {
             ItemStack[] inventory) {
         this.playerName = playerName;
         this.playerId = playerId;
+        this.playerInventory = playerInventory;
         this.firstActivity = firstActivity;
         this.lastActivity = lastActivity;
         this.sanctions = sanctions;
@@ -79,6 +84,14 @@ public class StaffPlayer {
 
     public void setPlayerId(UUID playerId) {
         this.playerId = playerId;
+    }
+
+    public Inventory getPlayerInventory() {
+        return playerInventory;
+    }
+
+    public void setPlayerInventory(Inventory playerInventory) {
+        this.playerInventory = playerInventory;
     }
 
     public Date getFirstActivity() {

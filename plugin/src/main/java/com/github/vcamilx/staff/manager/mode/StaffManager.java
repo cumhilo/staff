@@ -31,7 +31,7 @@ public class StaffManager {
         if (!isStaffMode(player)) {
             setStaffMode(player, true);
 
-            // inventoryManager.setInventory(player, player.getInventory().getContents());
+            inventoryManager.setInventory(player, player.getInventory());
             player.getInventory().clear();
 
             inventoryManager.inventory(player);
@@ -53,7 +53,7 @@ public class StaffManager {
 
         setStaffMode(player, false);
 
-        // player.getInventory().setContents(inventoryManager.getInventory(player));
+        player.getInventory().setContents(inventoryManager.getInventory(player));
         player.setGameMode(GameMode.SURVIVAL);
         vanishManager.setVanish(player);
 
