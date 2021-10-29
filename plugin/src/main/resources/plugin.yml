@@ -1,8 +1,0 @@
-name: Staff
-version: 2.0
-api-version: 1.13
-main: com.github.vcamilx.staff.Staff
-description: "Improve your server's moderation tools!"
-authors:
-  - vCamilx
-  - iAlexT
