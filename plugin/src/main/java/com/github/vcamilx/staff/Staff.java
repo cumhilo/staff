@@ -18,7 +18,6 @@ public final class Staff extends JavaPlugin {
     public void onEnable() {
         Injector injector = Injector.create(new MainModule(this));
         injector.injectMembers(this);
-
         saveDefaultConfig();
         staffService.start();
     }
