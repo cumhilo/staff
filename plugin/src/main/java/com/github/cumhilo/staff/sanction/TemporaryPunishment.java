@@ -7,5 +7,5 @@ public interface TemporaryPunishment
 
     Duration duration();
 
-    void setDuration(Duration duration);
+    TemporaryPunishment setDuration(Duration duration);
 }

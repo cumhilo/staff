@@ -26,13 +26,17 @@ public interface Punishment {
      */
     Instant date();
 
+    PunishmentType type();
+
     boolean isActive();
 
-    void setIssuer(UUID issuer);
+    Punishment setIssuer(UUID issuer);
 
-    void setReason(String reason);
+    Punishment setReason(String reason);
 
-    void setDate(Instant date);
+    Punishment setDate(Instant date);
 
-    void setActive(boolean active);
+    Punishment setActive(boolean active);
+
+    Punishment setType(PunishmentType type);
 }
