@@ -32,7 +32,7 @@ public class SyncRepositoryImpl<T> implements SyncRepository<T> {
         try {
             return syncStorage.read(filePath, classOfT);
         } catch (IOException e) {
-            exceptionHandler.handle(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -41,10 +41,8 @@ public class SyncRepositoryImpl<T> implements SyncRepository<T> {
         try {
             return syncStorage.read(filePath, typeOfT);
         } catch (IOException e) {
-            exceptionHandler.handle(e);
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 
     @Override
