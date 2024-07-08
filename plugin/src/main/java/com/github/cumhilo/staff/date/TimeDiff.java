@@ -24,14 +24,16 @@ public class TimeDiff {
         return duration.toMillis() - (now.toEpochMilli() - start.toEpochMilli());
     }
 
-    public String getRemainingTimeFormatted() {
-        long remainingTime = getRemainingTime();
-        long seconds = remainingTime / 1000;
-        long minutes = seconds / 60;
-        long hours = minutes / 60;
-        long days = hours / 24;
+    public long getElapsedTime() {
+        return now.toEpochMilli() - start.toEpochMilli();
+    }
 
-        return days + "d " + hours % 24 + "h " + minutes % 60 + "m " + seconds % 60 + "s";
+    public String getRemainingTimeFormatted() {
+        return TimeFormat.toSimplifiedHumanTime(getRemainingTime());
+    }
+
+    public String getElapsedTimeFormatted() {
+        return TimeFormat.toSimplifiedHumanTime(getElapsedTime());
     }
 
     public void update() {
