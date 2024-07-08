@@ -1,9 +1,17 @@
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
-    implementation 'me.yushust.inject:core:0.4.2-SNAPSHOT'
-    implementation 'me.fixeddev:commandflow-bukkit:0.4.0'
+    // cloud incendo
+    compileOnly "io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
+
+    implementation 'org.incendo:cloud-paper:2.0.0-beta.8'
+    implementation 'org.incendo:cloud-annotations:2.0.0-rc.2'
+    implementation 'org.incendo:cloud-processors-cooldown:1.0.0-beta.3'
+    implementation 'org.incendo:cloud-minecraft-extras:2.0.0-beta.8'
+
+    //compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+//    implementation 'me.yushust.inject:core:0.4.2-SNAPSHOT'
+//    implementation 'me.fixeddev:commandflow-bukkit:0.4.0'
     implementation 'redis.clients:jedis:3.6.0'
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     implementation project(':core')
     implementation project(':version:v1_8_R3')

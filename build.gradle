@@ -1,32 +1,32 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 allprojects {
-    group 'com.github.vcamilx'
-    version '2.0-SNAPSHOT'
+    group 'com.github.cumhilo'
+    version '1.0-SNAPSHOT'
 }
 
 subprojects {
-    group 'com.github.vcamilx'
-    version '2.0-SNAPSHOT'
+    group 'com.github.cumhilo'
+    version '1.0-SNAPSHOT'
 
     apply plugin: 'java'
     apply plugin: 'com.github.johnrengelman.shadow'
 
     repositories {
         mavenCentral()
+        maven { url = "https://oss.sonatype.org/content/groups/public/" }
+        maven { url = "https://repo.papermc.io/repository/maven-public/" }
         maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
         maven { url = 'https://oss.sonatype.org/content/groups/public/' }
-        maven { url = 'https://repo.unnamed.team/repository/unnamed-snapshots/' }
-        maven { url = 'https://repo.unnamed.team/repository/unnamed-releases/' }
     }
 
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
 
-    dependencies {
+    /*dependencies {
         implementation 'team.unnamed.gui:core:2.2.1-SNAPSHOT'
-    }
+    }*/
 }
