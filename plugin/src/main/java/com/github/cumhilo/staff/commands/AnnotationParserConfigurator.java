@@ -8,11 +8,11 @@ import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.incendo.cloud.annotations.AnnotationParser;
 import org.incendo.cloud.paper.LegacyPaperCommandManager;
-import org.incendo.cloud.parser.ParserRegistry;
 
 import java.net.URL;
 
-public class AnnotationParserConfigurator implements Configurator<AnnotationParser<CommandSender>> {
+public class AnnotationParserConfigurator
+        implements Configurator<AnnotationParser<CommandSender>> {
 
     private final LegacyPaperCommandManager<CommandSender> commandManager;
 

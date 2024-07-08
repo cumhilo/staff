@@ -1,6 +1,6 @@
 package com.github.cumhilo.staff;
 
-public class StaffPermissions {
+public final class StaffPermissions {
     public static final String STAFF_ADMIN = "staff.*";
     public static final String STAFF_MOD = "staff.mod";
 
