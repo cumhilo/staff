@@ -27,7 +27,7 @@ public class CommandCooldownConfigurator
 
     @Override
     public CooldownManager<CommandSender> configure() {
-        CooldownConfiguration<CommandSender> cooldownConfig = CooldownConfiguration.<CommandSender>builder()
+        final var cooldownConfig = CooldownConfiguration.<CommandSender>builder()
                 .repository(cooldownRepository)
                 .bypassCooldown(sender -> sender.hasPermission(BYPASS_COMMAND_COOLDOWN))
                 .addCreationListener(new ScheduledCleanupCreationListener<>(scheduler, cooldownRepository))

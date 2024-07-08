@@ -8,6 +8,7 @@ import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.incendo.cloud.annotations.AnnotationParser;
 import org.incendo.cloud.paper.LegacyPaperCommandManager;
+import org.incendo.cloud.parser.ParserRegistry;
 
 import java.net.URL;
 
@@ -21,10 +22,11 @@ public class AnnotationParserConfigurator implements Configurator<AnnotationPars
 
     @Override
     public AnnotationParser<CommandSender> configure() {
-        AnnotationParser<CommandSender> annotationParser = new AnnotationParser<>(commandManager, CommandSender.class);
+        final var annotationParser = new AnnotationParser<>(commandManager, CommandSender.class);
+        final var parserRegistry = commandManager.parserRegistry();
 
-        commandManager.parserRegistry().registerParserSupplier(TypeToken.get(GameMode.class), options -> new GamemodeParser());
-        commandManager.parserRegistry().registerParserSupplier(TypeToken.get(URL.class), options -> new URLParser());
+        parserRegistry.registerParserSupplier(TypeToken.get(GameMode.class), options -> new GamemodeParser());
+        parserRegistry.registerParserSupplier(TypeToken.get(URL.class), options -> new URLParser());
 
         return annotationParser;
     }

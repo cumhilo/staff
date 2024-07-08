@@ -1,11 +1,7 @@
 package com.github.cumhilo.staff.commands;
 
 import com.github.cumhilo.staff.module.Module;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.incendo.cloud.annotations.AnnotationParser;
-import org.incendo.cloud.paper.LegacyPaperCommandManager;
-import org.incendo.cloud.processors.cooldown.CooldownManager;
 
 public class CommandModule implements Module {
 
@@ -17,17 +13,14 @@ public class CommandModule implements Module {
 
     @Override
     public void configure() {
-        CommandManagerConfigurator managerConfigurator = new CommandManagerConfigurator(plugin);
-        LegacyPaperCommandManager<CommandSender> commandManager = managerConfigurator.configure();
+        final var commandManager = new CommandManagerConfigurator(plugin).configure();
+        final var cooldownManager = new CommandCooldownConfigurator().configure();
 
-        CommandCooldownConfigurator cooldownConfigurator = new CommandCooldownConfigurator();
-        CooldownManager<CommandSender> cooldownManager = cooldownConfigurator.configure();
         commandManager.registerCommandPostProcessor(cooldownManager.createPostprocessor());
 
-        AnnotationParserConfigurator parserConfigurator = new AnnotationParserConfigurator(commandManager);
-        AnnotationParser<CommandSender> annotationParser = parserConfigurator.configure();
+        final var annotationParser = new AnnotationParserConfigurator(commandManager).configure();
+        final var registry = new CommandRegistry(plugin, annotationParser);
 
-        CommandRegistry registry = new CommandRegistry(plugin, annotationParser);
         registry.setup();
     }
 }
