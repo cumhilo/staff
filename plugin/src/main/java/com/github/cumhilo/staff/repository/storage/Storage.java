@@ -28,7 +28,7 @@ public class Storage<T>
         return asyncStorage;
     }
 
-    public static <T> Storage<T> createGson(Gson gson, String baseDirectory, Class<T> clazz) {
+    public static <T> Repository<T> createGson(Gson gson, String baseDirectory, Class<T> clazz) {
         SyncStorage<T> syncStorage = new GsonSyncStorage<>(gson, baseDirectory, clazz);
         AsyncStorage<T> asyncStorage = new GsonAsyncStorage<>(gson, baseDirectory, clazz);
 
