@@ -1,6 +1,7 @@
 package com.github.cumhilo.staff.repository.storage;
 
 import com.github.cumhilo.staff.repository.AsyncRepository;
+import com.github.cumhilo.staff.repository.Repository;
 import com.github.cumhilo.staff.repository.SyncRepository;
 import com.github.cumhilo.staff.repository.impl.AsyncRepositoryImpl;
 import com.github.cumhilo.staff.repository.impl.SyncRepositoryImpl;
@@ -8,7 +9,8 @@ import com.github.cumhilo.staff.repository.local.gson.GsonAsyncStorage;
 import com.github.cumhilo.staff.repository.local.gson.GsonSyncStorage;
 import com.google.gson.Gson;
 
-public class Storage<T> {
+public class Storage<T>
+        implements Repository<T> {
 
     private final SyncRepository<T> syncStorage;
     private final AsyncRepository<T> asyncStorage;
@@ -33,6 +35,13 @@ public class Storage<T> {
         return new Storage<>(new SyncRepositoryImpl<>(syncStorage), new AsyncRepositoryImpl<>(asyncStorage));
     }
 
-    // Podrías agregar métodos similares para crear diferentes tipos de almacenamiento, por ejemplo:
-    // public static <T> Repository<T> createMongoStorage(...);
+    @Override
+    public SyncRepository<T> sync() {
+        return syncStorage;
+    }
+
+    @Override
+    public AsyncRepository<T> async() {
+        return asyncStorage;
+    }
 }
