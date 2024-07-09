@@ -11,6 +11,14 @@ public class Sanctions {
     private Set<Punishment> punishments;
     private Set<Punishment> activePunishments;
 
+    public Set<Punishment> punishments() {
+        return punishments;
+    }
+
+    public Set<Punishment> activePunishments() {
+        return activePunishments;
+    }
+
     public void addPunishment(@NotNull Punishment punishment) {
         punishments.add(punishment);
         activePunishments.add(punishment);
